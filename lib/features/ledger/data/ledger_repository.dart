@@ -65,11 +65,11 @@ class LedgerRepository {
     await _db.transaction(() async {
       await _db.into(_db.loans).insert(
             LoansCompanion.insert(
-              id: loanId, userId: 'local', name: name, bankName: Value(bankName),
+              id: loanId, userId: const Value('local'), name: name, bankName: Value(bankName),
               principal: principal, annualRateBp: Value(annualRateBp), termMonths: termMonths,
               firstDueDate: firstDueIso, dueDay: dueDayOfMonth, installmentAmount: calc.installment,
               totalInterest: calc.totalInterest, totalReturn: calc.totalReturn,
-              effectiveRateBp: annualRateBp, calculationMethod: 'B', status: _activeStatus,
+              effectiveRateBp: annualRateBp, calculationMethod: 'B', status: Value(_activeStatus),
               createdAt: now, updatedAt: now,
             ),
           );
