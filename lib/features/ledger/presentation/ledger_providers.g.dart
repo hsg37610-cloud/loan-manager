@@ -263,7 +263,7 @@ final class RecordPaymentProvider
   RecordPayment create() => RecordPayment();
 }
 
-String _$recordPaymentHash() => r'09f9c8bd008e0abffaec5857459b090bea815f58';
+String _$recordPaymentHash() => r'd87085b02816ac02b8e65782b1a1ac4c29304eb0';
 
 abstract class _$RecordPayment extends $AsyncNotifier<void> {
   FutureOr<void> build();
@@ -307,7 +307,7 @@ final class CreateLoanProvider
   CreateLoan create() => CreateLoan();
 }
 
-String _$createLoanHash() => r'588f4a3aa1f6dbfdcd2baf18325a329b10e4bde4';
+String _$createLoanHash() => r'59947fb900c0b525d544a34db59a35112c2574df';
 
 abstract class _$CreateLoan extends $AsyncNotifier<String?> {
   FutureOr<String?> build();
@@ -351,7 +351,7 @@ final class UpdateLoanProvider
   UpdateLoan create() => UpdateLoan();
 }
 
-String _$updateLoanHash() => r'1d2c50a6a0397e1f2f63e8d91f9185a6dbd0d4ba';
+String _$updateLoanHash() => r'55b4922e3716e4e2905bdd3c103027e759460813';
 
 abstract class _$UpdateLoan extends $AsyncNotifier<void> {
   FutureOr<void> build();

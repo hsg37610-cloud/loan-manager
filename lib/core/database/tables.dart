@@ -1,13 +1,6 @@
 ﻿import 'package:drift/drift.dart';
 
-abstract final class LoanStatus {
-  static const active = 'active';
-  static const settled = 'settled';
-  static const cancelled = 'cancelled';
-}
-
 @DataClassName('LoanRow')
-@TableIndex(name: 'idx_loans_status', columns: {#status})
 class Loans extends Table {
   TextColumn get id => text()();
   TextColumn get userId => text().withDefault(const Constant('local'))();
@@ -29,6 +22,10 @@ class Loans extends Table {
   TextColumn get status => text().withDefault(const Constant('active'))();
   TextColumn get settledDate => text().nullable()();
   TextColumn get note => text().nullable()();
+  TextColumn get facilityNumber => text().nullable()();
+  TextColumn get paymentLink => text().nullable()();
+  TextColumn get loanType => text().withDefault(const Constant('normal'))();
+  IntColumn get feeAmount => integer().nullable()();
   TextColumn get createdAt => text()();
   TextColumn get updatedAt => text()();
   TextColumn get deletedAt => text().nullable()();
@@ -37,8 +34,6 @@ class Loans extends Table {
 }
 
 @DataClassName('InstallmentRow')
-@TableIndex(name: 'idx_installments_due_date', columns: {#dueDate})
-@TableIndex(name: 'idx_installments_jalali_month', columns: {#jalaliMonth})
 class Installments extends Table {
   TextColumn get id => text()();
   TextColumn get loanId => text().references(Loans, #id)();
@@ -57,7 +52,6 @@ class Installments extends Table {
 }
 
 @DataClassName('PaymentRow')
-@TableIndex(name: 'idx_payments_loan', columns: {#loanId})
 class Payments extends Table {
   TextColumn get id => text()();
   TextColumn get loanId => text().references(Loans, #id)();
@@ -74,8 +68,6 @@ class Payments extends Table {
 }
 
 @DataClassName('PaymentAllocationRow')
-@TableIndex(name: 'idx_allocations_payment', columns: {#paymentId})
-@TableIndex(name: 'idx_allocations_installment', columns: {#installmentId})
 class PaymentAllocations extends Table {
   TextColumn get id => text()();
   TextColumn get paymentId => text().references(Payments, #id)();
@@ -87,7 +79,6 @@ class PaymentAllocations extends Table {
 }
 
 @DataClassName('LoanSettlementRow')
-@TableIndex(name: 'idx_settlements_loan', columns: {#loanId})
 class LoanSettlements extends Table {
   TextColumn get id => text()();
   TextColumn get loanId => text().references(Loans, #id)();
@@ -102,7 +93,6 @@ class LoanSettlements extends Table {
 }
 
 @DataClassName('InstallmentEventRow')
-@TableIndex(name: 'idx_events_installment', columns: {#installmentId})
 class InstallmentEvents extends Table {
   TextColumn get id => text()();
   TextColumn get installmentId => text().references(Installments, #id)();

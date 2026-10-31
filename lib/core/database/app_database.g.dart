@@ -220,6 +220,51 @@ class $LoansTable extends Loans with TableInfo<$LoansTable, LoanRow> {
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _facilityNumberMeta = const VerificationMeta(
+    'facilityNumber',
+  );
+  @override
+  late final GeneratedColumn<String> facilityNumber = GeneratedColumn<String>(
+    'facility_number',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _paymentLinkMeta = const VerificationMeta(
+    'paymentLink',
+  );
+  @override
+  late final GeneratedColumn<String> paymentLink = GeneratedColumn<String>(
+    'payment_link',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _loanTypeMeta = const VerificationMeta(
+    'loanType',
+  );
+  @override
+  late final GeneratedColumn<String> loanType = GeneratedColumn<String>(
+    'loan_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('normal'),
+  );
+  static const VerificationMeta _feeAmountMeta = const VerificationMeta(
+    'feeAmount',
+  );
+  @override
+  late final GeneratedColumn<int> feeAmount = GeneratedColumn<int>(
+    'fee_amount',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _createdAtMeta = const VerificationMeta(
     'createdAt',
   );
@@ -275,6 +320,10 @@ class $LoansTable extends Loans with TableInfo<$LoansTable, LoanRow> {
     status,
     settledDate,
     note,
+    facilityNumber,
+    paymentLink,
+    loanType,
+    feeAmount,
     createdAt,
     updatedAt,
     deletedAt,
@@ -457,6 +506,36 @@ class $LoansTable extends Loans with TableInfo<$LoansTable, LoanRow> {
         note.isAcceptableOrUnknown(data['note']!, _noteMeta),
       );
     }
+    if (data.containsKey('facility_number')) {
+      context.handle(
+        _facilityNumberMeta,
+        facilityNumber.isAcceptableOrUnknown(
+          data['facility_number']!,
+          _facilityNumberMeta,
+        ),
+      );
+    }
+    if (data.containsKey('payment_link')) {
+      context.handle(
+        _paymentLinkMeta,
+        paymentLink.isAcceptableOrUnknown(
+          data['payment_link']!,
+          _paymentLinkMeta,
+        ),
+      );
+    }
+    if (data.containsKey('loan_type')) {
+      context.handle(
+        _loanTypeMeta,
+        loanType.isAcceptableOrUnknown(data['loan_type']!, _loanTypeMeta),
+      );
+    }
+    if (data.containsKey('fee_amount')) {
+      context.handle(
+        _feeAmountMeta,
+        feeAmount.isAcceptableOrUnknown(data['fee_amount']!, _feeAmountMeta),
+      );
+    }
     if (data.containsKey('created_at')) {
       context.handle(
         _createdAtMeta,
@@ -568,6 +647,22 @@ class $LoansTable extends Loans with TableInfo<$LoansTable, LoanRow> {
         DriftSqlType.string,
         data['${effectivePrefix}note'],
       ),
+      facilityNumber: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}facility_number'],
+      ),
+      paymentLink: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}payment_link'],
+      ),
+      loanType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}loan_type'],
+      )!,
+      feeAmount: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}fee_amount'],
+      ),
       createdAt: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}created_at'],
@@ -610,6 +705,10 @@ class LoanRow extends DataClass implements Insertable<LoanRow> {
   final String status;
   final String? settledDate;
   final String? note;
+  final String? facilityNumber;
+  final String? paymentLink;
+  final String loanType;
+  final int? feeAmount;
   final String createdAt;
   final String updatedAt;
   final String? deletedAt;
@@ -634,6 +733,10 @@ class LoanRow extends DataClass implements Insertable<LoanRow> {
     required this.status,
     this.settledDate,
     this.note,
+    this.facilityNumber,
+    this.paymentLink,
+    required this.loanType,
+    this.feeAmount,
     required this.createdAt,
     required this.updatedAt,
     this.deletedAt,
@@ -670,6 +773,16 @@ class LoanRow extends DataClass implements Insertable<LoanRow> {
     }
     if (!nullToAbsent || note != null) {
       map['note'] = Variable<String>(note);
+    }
+    if (!nullToAbsent || facilityNumber != null) {
+      map['facility_number'] = Variable<String>(facilityNumber);
+    }
+    if (!nullToAbsent || paymentLink != null) {
+      map['payment_link'] = Variable<String>(paymentLink);
+    }
+    map['loan_type'] = Variable<String>(loanType);
+    if (!nullToAbsent || feeAmount != null) {
+      map['fee_amount'] = Variable<int>(feeAmount);
     }
     map['created_at'] = Variable<String>(createdAt);
     map['updated_at'] = Variable<String>(updatedAt);
@@ -709,6 +822,16 @@ class LoanRow extends DataClass implements Insertable<LoanRow> {
           ? const Value.absent()
           : Value(settledDate),
       note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+      facilityNumber: facilityNumber == null && nullToAbsent
+          ? const Value.absent()
+          : Value(facilityNumber),
+      paymentLink: paymentLink == null && nullToAbsent
+          ? const Value.absent()
+          : Value(paymentLink),
+      loanType: Value(loanType),
+      feeAmount: feeAmount == null && nullToAbsent
+          ? const Value.absent()
+          : Value(feeAmount),
       createdAt: Value(createdAt),
       updatedAt: Value(updatedAt),
       deletedAt: deletedAt == null && nullToAbsent
@@ -743,6 +866,10 @@ class LoanRow extends DataClass implements Insertable<LoanRow> {
       status: serializer.fromJson<String>(json['status']),
       settledDate: serializer.fromJson<String?>(json['settledDate']),
       note: serializer.fromJson<String?>(json['note']),
+      facilityNumber: serializer.fromJson<String?>(json['facilityNumber']),
+      paymentLink: serializer.fromJson<String?>(json['paymentLink']),
+      loanType: serializer.fromJson<String>(json['loanType']),
+      feeAmount: serializer.fromJson<int?>(json['feeAmount']),
       createdAt: serializer.fromJson<String>(json['createdAt']),
       updatedAt: serializer.fromJson<String>(json['updatedAt']),
       deletedAt: serializer.fromJson<String?>(json['deletedAt']),
@@ -772,6 +899,10 @@ class LoanRow extends DataClass implements Insertable<LoanRow> {
       'status': serializer.toJson<String>(status),
       'settledDate': serializer.toJson<String?>(settledDate),
       'note': serializer.toJson<String?>(note),
+      'facilityNumber': serializer.toJson<String?>(facilityNumber),
+      'paymentLink': serializer.toJson<String?>(paymentLink),
+      'loanType': serializer.toJson<String>(loanType),
+      'feeAmount': serializer.toJson<int?>(feeAmount),
       'createdAt': serializer.toJson<String>(createdAt),
       'updatedAt': serializer.toJson<String>(updatedAt),
       'deletedAt': serializer.toJson<String?>(deletedAt),
@@ -799,6 +930,10 @@ class LoanRow extends DataClass implements Insertable<LoanRow> {
     String? status,
     Value<String?> settledDate = const Value.absent(),
     Value<String?> note = const Value.absent(),
+    Value<String?> facilityNumber = const Value.absent(),
+    Value<String?> paymentLink = const Value.absent(),
+    String? loanType,
+    Value<int?> feeAmount = const Value.absent(),
     String? createdAt,
     String? updatedAt,
     Value<String?> deletedAt = const Value.absent(),
@@ -823,6 +958,12 @@ class LoanRow extends DataClass implements Insertable<LoanRow> {
     status: status ?? this.status,
     settledDate: settledDate.present ? settledDate.value : this.settledDate,
     note: note.present ? note.value : this.note,
+    facilityNumber: facilityNumber.present
+        ? facilityNumber.value
+        : this.facilityNumber,
+    paymentLink: paymentLink.present ? paymentLink.value : this.paymentLink,
+    loanType: loanType ?? this.loanType,
+    feeAmount: feeAmount.present ? feeAmount.value : this.feeAmount,
     createdAt: createdAt ?? this.createdAt,
     updatedAt: updatedAt ?? this.updatedAt,
     deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
@@ -869,6 +1010,14 @@ class LoanRow extends DataClass implements Insertable<LoanRow> {
           ? data.settledDate.value
           : this.settledDate,
       note: data.note.present ? data.note.value : this.note,
+      facilityNumber: data.facilityNumber.present
+          ? data.facilityNumber.value
+          : this.facilityNumber,
+      paymentLink: data.paymentLink.present
+          ? data.paymentLink.value
+          : this.paymentLink,
+      loanType: data.loanType.present ? data.loanType.value : this.loanType,
+      feeAmount: data.feeAmount.present ? data.feeAmount.value : this.feeAmount,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
       deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
@@ -898,6 +1047,10 @@ class LoanRow extends DataClass implements Insertable<LoanRow> {
           ..write('status: $status, ')
           ..write('settledDate: $settledDate, ')
           ..write('note: $note, ')
+          ..write('facilityNumber: $facilityNumber, ')
+          ..write('paymentLink: $paymentLink, ')
+          ..write('loanType: $loanType, ')
+          ..write('feeAmount: $feeAmount, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt, ')
           ..write('deletedAt: $deletedAt')
@@ -927,6 +1080,10 @@ class LoanRow extends DataClass implements Insertable<LoanRow> {
     status,
     settledDate,
     note,
+    facilityNumber,
+    paymentLink,
+    loanType,
+    feeAmount,
     createdAt,
     updatedAt,
     deletedAt,
@@ -955,6 +1112,10 @@ class LoanRow extends DataClass implements Insertable<LoanRow> {
           other.status == this.status &&
           other.settledDate == this.settledDate &&
           other.note == this.note &&
+          other.facilityNumber == this.facilityNumber &&
+          other.paymentLink == this.paymentLink &&
+          other.loanType == this.loanType &&
+          other.feeAmount == this.feeAmount &&
           other.createdAt == this.createdAt &&
           other.updatedAt == this.updatedAt &&
           other.deletedAt == this.deletedAt);
@@ -981,6 +1142,10 @@ class LoansCompanion extends UpdateCompanion<LoanRow> {
   final Value<String> status;
   final Value<String?> settledDate;
   final Value<String?> note;
+  final Value<String?> facilityNumber;
+  final Value<String?> paymentLink;
+  final Value<String> loanType;
+  final Value<int?> feeAmount;
   final Value<String> createdAt;
   final Value<String> updatedAt;
   final Value<String?> deletedAt;
@@ -1006,6 +1171,10 @@ class LoansCompanion extends UpdateCompanion<LoanRow> {
     this.status = const Value.absent(),
     this.settledDate = const Value.absent(),
     this.note = const Value.absent(),
+    this.facilityNumber = const Value.absent(),
+    this.paymentLink = const Value.absent(),
+    this.loanType = const Value.absent(),
+    this.feeAmount = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
     this.deletedAt = const Value.absent(),
@@ -1032,6 +1201,10 @@ class LoansCompanion extends UpdateCompanion<LoanRow> {
     this.status = const Value.absent(),
     this.settledDate = const Value.absent(),
     this.note = const Value.absent(),
+    this.facilityNumber = const Value.absent(),
+    this.paymentLink = const Value.absent(),
+    this.loanType = const Value.absent(),
+    this.feeAmount = const Value.absent(),
     required String createdAt,
     required String updatedAt,
     this.deletedAt = const Value.absent(),
@@ -1070,6 +1243,10 @@ class LoansCompanion extends UpdateCompanion<LoanRow> {
     Expression<String>? status,
     Expression<String>? settledDate,
     Expression<String>? note,
+    Expression<String>? facilityNumber,
+    Expression<String>? paymentLink,
+    Expression<String>? loanType,
+    Expression<int>? feeAmount,
     Expression<String>? createdAt,
     Expression<String>? updatedAt,
     Expression<String>? deletedAt,
@@ -1096,6 +1273,10 @@ class LoansCompanion extends UpdateCompanion<LoanRow> {
       if (status != null) 'status': status,
       if (settledDate != null) 'settled_date': settledDate,
       if (note != null) 'note': note,
+      if (facilityNumber != null) 'facility_number': facilityNumber,
+      if (paymentLink != null) 'payment_link': paymentLink,
+      if (loanType != null) 'loan_type': loanType,
+      if (feeAmount != null) 'fee_amount': feeAmount,
       if (createdAt != null) 'created_at': createdAt,
       if (updatedAt != null) 'updated_at': updatedAt,
       if (deletedAt != null) 'deleted_at': deletedAt,
@@ -1124,6 +1305,10 @@ class LoansCompanion extends UpdateCompanion<LoanRow> {
     Value<String>? status,
     Value<String?>? settledDate,
     Value<String?>? note,
+    Value<String?>? facilityNumber,
+    Value<String?>? paymentLink,
+    Value<String>? loanType,
+    Value<int?>? feeAmount,
     Value<String>? createdAt,
     Value<String>? updatedAt,
     Value<String?>? deletedAt,
@@ -1150,6 +1335,10 @@ class LoansCompanion extends UpdateCompanion<LoanRow> {
       status: status ?? this.status,
       settledDate: settledDate ?? this.settledDate,
       note: note ?? this.note,
+      facilityNumber: facilityNumber ?? this.facilityNumber,
+      paymentLink: paymentLink ?? this.paymentLink,
+      loanType: loanType ?? this.loanType,
+      feeAmount: feeAmount ?? this.feeAmount,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       deletedAt: deletedAt ?? this.deletedAt,
@@ -1220,6 +1409,18 @@ class LoansCompanion extends UpdateCompanion<LoanRow> {
     if (note.present) {
       map['note'] = Variable<String>(note.value);
     }
+    if (facilityNumber.present) {
+      map['facility_number'] = Variable<String>(facilityNumber.value);
+    }
+    if (paymentLink.present) {
+      map['payment_link'] = Variable<String>(paymentLink.value);
+    }
+    if (loanType.present) {
+      map['loan_type'] = Variable<String>(loanType.value);
+    }
+    if (feeAmount.present) {
+      map['fee_amount'] = Variable<int>(feeAmount.value);
+    }
     if (createdAt.present) {
       map['created_at'] = Variable<String>(createdAt.value);
     }
@@ -1258,6 +1459,10 @@ class LoansCompanion extends UpdateCompanion<LoanRow> {
           ..write('status: $status, ')
           ..write('settledDate: $settledDate, ')
           ..write('note: $note, ')
+          ..write('facilityNumber: $facilityNumber, ')
+          ..write('paymentLink: $paymentLink, ')
+          ..write('loanType: $loanType, ')
+          ..write('feeAmount: $feeAmount, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt, ')
           ..write('deletedAt: $deletedAt, ')
@@ -3968,38 +4173,6 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   );
   late final $InstallmentEventsTable installmentEvents =
       $InstallmentEventsTable(this);
-  late final Index idxLoansStatus = Index(
-    'idx_loans_status',
-    'CREATE INDEX idx_loans_status ON loans (status)',
-  );
-  late final Index idxInstallmentsDueDate = Index(
-    'idx_installments_due_date',
-    'CREATE INDEX idx_installments_due_date ON installments (due_date)',
-  );
-  late final Index idxInstallmentsJalaliMonth = Index(
-    'idx_installments_jalali_month',
-    'CREATE INDEX idx_installments_jalali_month ON installments (jalali_month)',
-  );
-  late final Index idxPaymentsLoan = Index(
-    'idx_payments_loan',
-    'CREATE INDEX idx_payments_loan ON payments (loan_id)',
-  );
-  late final Index idxAllocationsPayment = Index(
-    'idx_allocations_payment',
-    'CREATE INDEX idx_allocations_payment ON payment_allocations (payment_id)',
-  );
-  late final Index idxAllocationsInstallment = Index(
-    'idx_allocations_installment',
-    'CREATE INDEX idx_allocations_installment ON payment_allocations (installment_id)',
-  );
-  late final Index idxSettlementsLoan = Index(
-    'idx_settlements_loan',
-    'CREATE INDEX idx_settlements_loan ON loan_settlements (loan_id)',
-  );
-  late final Index idxEventsInstallment = Index(
-    'idx_events_installment',
-    'CREATE INDEX idx_events_installment ON installment_events (installment_id)',
-  );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -4011,14 +4184,6 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     paymentAllocations,
     loanSettlements,
     installmentEvents,
-    idxLoansStatus,
-    idxInstallmentsDueDate,
-    idxInstallmentsJalaliMonth,
-    idxPaymentsLoan,
-    idxAllocationsPayment,
-    idxAllocationsInstallment,
-    idxSettlementsLoan,
-    idxEventsInstallment,
   ];
 }
 
@@ -4043,6 +4208,10 @@ typedef $$LoansTableCreateCompanionBuilder = LoansCompanion Function({
   Value<String> status,
   Value<String?> settledDate,
   Value<String?> note,
+  Value<String?> facilityNumber,
+  Value<String?> paymentLink,
+  Value<String> loanType,
+  Value<int?> feeAmount,
   required String createdAt,
   required String updatedAt,
   Value<String?> deletedAt,
@@ -4069,6 +4238,10 @@ typedef $$LoansTableUpdateCompanionBuilder = LoansCompanion Function({
   Value<String> status,
   Value<String?> settledDate,
   Value<String?> note,
+  Value<String?> facilityNumber,
+  Value<String?> paymentLink,
+  Value<String> loanType,
+  Value<int?> feeAmount,
   Value<String> createdAt,
   Value<String> updatedAt,
   Value<String?> deletedAt,
@@ -4241,6 +4414,26 @@ class $$LoansTableFilterComposer extends Composer<_$AppDatabase, $LoansTable> {
 
   ColumnFilters<String> get note => $composableBuilder(
     column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get facilityNumber => $composableBuilder(
+    column: $table.facilityNumber,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get paymentLink => $composableBuilder(
+    column: $table.paymentLink,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get loanType => $composableBuilder(
+    column: $table.loanType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get feeAmount => $composableBuilder(
+    column: $table.feeAmount,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -4444,6 +4637,26 @@ class $$LoansTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get facilityNumber => $composableBuilder(
+    column: $table.facilityNumber,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get paymentLink => $composableBuilder(
+    column: $table.paymentLink,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get loanType => $composableBuilder(
+    column: $table.loanType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get feeAmount => $composableBuilder(
+    column: $table.feeAmount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get createdAt => $composableBuilder(
     column: $table.createdAt,
     builder: (column) => ColumnOrderings(column),
@@ -4548,6 +4761,22 @@ class $$LoansTableAnnotationComposer
 
   GeneratedColumn<String> get note =>
       $composableBuilder(column: $table.note, builder: (column) => column);
+
+  GeneratedColumn<String> get facilityNumber => $composableBuilder(
+    column: $table.facilityNumber,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get paymentLink => $composableBuilder(
+    column: $table.paymentLink,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get loanType =>
+      $composableBuilder(column: $table.loanType, builder: (column) => column);
+
+  GeneratedColumn<int> get feeAmount =>
+      $composableBuilder(column: $table.feeAmount, builder: (column) => column);
 
   GeneratedColumn<String> get createdAt =>
       $composableBuilder(column: $table.createdAt, builder: (column) => column);
@@ -4686,6 +4915,10 @@ class $$LoansTableTableManager
                 Value<String> status = const Value.absent(),
                 Value<String?> settledDate = const Value.absent(),
                 Value<String?> note = const Value.absent(),
+                Value<String?> facilityNumber = const Value.absent(),
+                Value<String?> paymentLink = const Value.absent(),
+                Value<String> loanType = const Value.absent(),
+                Value<int?> feeAmount = const Value.absent(),
                 Value<String> createdAt = const Value.absent(),
                 Value<String> updatedAt = const Value.absent(),
                 Value<String?> deletedAt = const Value.absent(),
@@ -4711,6 +4944,10 @@ class $$LoansTableTableManager
                 status: status,
                 settledDate: settledDate,
                 note: note,
+                facilityNumber: facilityNumber,
+                paymentLink: paymentLink,
+                loanType: loanType,
+                feeAmount: feeAmount,
                 createdAt: createdAt,
                 updatedAt: updatedAt,
                 deletedAt: deletedAt,
@@ -4738,6 +4975,10 @@ class $$LoansTableTableManager
                 Value<String> status = const Value.absent(),
                 Value<String?> settledDate = const Value.absent(),
                 Value<String?> note = const Value.absent(),
+                Value<String?> facilityNumber = const Value.absent(),
+                Value<String?> paymentLink = const Value.absent(),
+                Value<String> loanType = const Value.absent(),
+                Value<int?> feeAmount = const Value.absent(),
                 required String createdAt,
                 required String updatedAt,
                 Value<String?> deletedAt = const Value.absent(),
@@ -4763,6 +5004,10 @@ class $$LoansTableTableManager
                 status: status,
                 settledDate: settledDate,
                 note: note,
+                facilityNumber: facilityNumber,
+                paymentLink: paymentLink,
+                loanType: loanType,
+                feeAmount: feeAmount,
                 createdAt: createdAt,
                 updatedAt: updatedAt,
                 deletedAt: deletedAt,

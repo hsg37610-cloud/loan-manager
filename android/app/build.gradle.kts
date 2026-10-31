@@ -6,12 +6,16 @@ plugins {
 
 android {
     namespace = "com.loanmanager.loan_manager"
-    compileSdk = 34
+    // Phase 4 plugins (local_auth, flutter_local_notifications, ...) need a recent compileSdk.
+    // If AGP complains that this SDK level is unsupported, bump AGP in settings.gradle.kts.
+    compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        // Required by flutter_local_notifications (java.time on older Android versions).
+        isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
@@ -31,6 +35,10 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+}
+
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }
 
 flutter {

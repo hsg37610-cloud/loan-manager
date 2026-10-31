@@ -1,4 +1,4 @@
-import 'finance_math.dart';
+﻿import 'finance_math.dart';
 
 class CalcAResult {
   final int totalReturn;
@@ -51,6 +51,21 @@ class InterestCalculator {
     return CalcBResult(j, total, roundDiv(total, term));
   }
 
+  static QarzAlHasanehResult calcQarzAlHasaneh({
+    required int principal,
+    required int termMonths,
+    required int feeAmount,
+  }) {
+    final principalMonths = termMonths - 1;
+    final monthlyPrincipal = principal ~/ principalMonths;
+    return QarzAlHasanehResult(
+      totalFee: feeAmount,
+      totalReturn: principal + feeAmount,
+      monthlyPrincipalInstallment: monthlyPrincipal,
+      finalInstallment: feeAmount,
+    );
+  }
+
   static CalcCResult calcC({
     required int term,
     required int loan,
@@ -60,4 +75,17 @@ class InterestCalculator {
     final r = roundDiv(240000 * (totalReturn - loan), loan * (term + 1));
     return CalcCResult(r, roundDiv(totalReturn, term));
   }
+}
+class QarzAlHasanehResult {
+  final int totalFee;
+  final int totalReturn;
+  final int monthlyPrincipalInstallment;
+  final int finalInstallment;
+
+  const QarzAlHasanehResult({
+    required this.totalFee,
+    required this.totalReturn,
+    required this.monthlyPrincipalInstallment,
+    required this.finalInstallment,
+  });
 }
