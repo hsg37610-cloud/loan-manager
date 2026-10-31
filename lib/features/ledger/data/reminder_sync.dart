@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loan_manager/core/database/app_database.dart';
 import 'package:loan_manager/core/database/app_database_provider.dart';
-import 'package:loan_manager/core/database/tables.dart';
 import 'package:loan_manager/core/notifications/notification_service.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 
@@ -75,7 +74,7 @@ class ReminderSync {
       await _notifications.cancelAll();
 
       final loans = await (_db.select(_db.loans)
-            ..where((t) => t.deletedAt.isNull() & t.status.equals(LoanStatus.active)))
+            ..where((t) => t.deletedAt.isNull() & t.status.equals('active')))
           .get();
       if (loans.isEmpty) return;
       final names = {for (final l in loans) l.id: l.name};
@@ -101,3 +100,4 @@ class ReminderSync {
     }
   }
 }
+

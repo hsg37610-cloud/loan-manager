@@ -9,7 +9,7 @@ class DashboardScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final loansAsync = ref.watch(activeLoansProvider);
-    final loans = loansAsync.valueOrNull ?? [];
+    final loans = loansAsync.value ?? [];
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(

@@ -47,8 +47,8 @@ class _LoanCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final installments = ref.watch(loanInstallmentsProvider(loan.id));
-    final total = installments.valueOrNull?.length ?? loan.termMonths;
-    final paid = installments.valueOrNull?.where((i) => i.isFullyPaid).length ?? 0;
+    final total = installments.value?.length ?? loan.termMonths;
+    final paid = installments.value?.where((i) => i.isFullyPaid).length ?? 0;
     final progress = total == 0 ? 0.0 : paid / total;
 
     return Card(

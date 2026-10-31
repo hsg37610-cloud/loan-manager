@@ -12,12 +12,27 @@ class App extends ConsumerWidget {
     final themeMode = ref.watch(themeModeNotifierProvider);
     final fontScale = ref.watch(fontScaleNotifierProvider);
     return MaterialApp.router(
-      title: 'مدیریت وام', debugShowCheckedModeBanner: false, routerConfig: appRouter,
-      theme: AppTheme.light, darkTheme: AppTheme.dark, themeMode: themeMode,
-      locale: const Locale('fa'), supportedLocales: const [Locale('fa')],
-      localizationsDelegates: const [GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate],
+      title: 'مدیریت وام',
+      debugShowCheckedModeBanner: false,
+      routerConfig: appRouter,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: themeMode,
+      locale: const Locale('fa'),
+      supportedLocales: const [Locale('fa')],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       builder: (context, child) {
-        return Directionality(textDirection: TextDirection.rtl, child: MediaQuery(data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(fontScale)), child: child!));
+        return Directionality(
+          textDirection: TextDirection.rtl,
+          child: MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(fontScale)),
+            child: child!,
+          ),
+        );
       },
     );
   }

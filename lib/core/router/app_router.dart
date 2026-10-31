@@ -1,4 +1,5 @@
-﻿import 'package:go_router/go_router.dart';
+﻿import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loan_manager/features/dashboard/presentation/dashboard_screen.dart';
 import 'package:loan_manager/features/settings/presentation/settings_screen.dart';
 import 'package:loan_manager/features/ledger/presentation/loan_list_screen.dart';

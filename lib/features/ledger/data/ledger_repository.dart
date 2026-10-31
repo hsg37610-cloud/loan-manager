@@ -56,14 +56,28 @@ class LedgerRepository {
     final now = _nowStamp();
 
     await _db.transaction(() async {
-      await _db.into(_db.loans).insert(LoansCompanion.insert(
-        id: loanId, userId: 'local', name: name, bankName: bankName,
-        principal: principal, annualRateBp: Value(annualRateBp), termMonths: termMonths,
-        firstDueDate: firstDueDate.toIso8601String().substring(0, 10), dueDay: dueDayOfMonth,
-        installmentAmount: schedule.first.amount, totalInterest: totalReturn - principal,
-        totalReturn: totalReturn, effectiveRateBp: annualRateBp ?? 0, calculationMethod: loanType == 'qarz' ? 'qarz' : 'B',
-        loanType: loanType, feeAmount: Value(feeAmount), facilityNumber: Value(facilityNumber), paymentLink: Value(paymentLink),
-        status: _activeStatus, createdAt: now, updatedAt: now,
+      await _db.into(_db.loans).insert(LoansCompanion(
+        id: Value(loanId),
+        userId: const Value('local'),
+        name: Value(name),
+        bankName: Value(bankName),
+        principal: Value(principal),
+        annualRateBp: Value(annualRateBp),
+        termMonths: Value(termMonths),
+        firstDueDate: Value(firstDueDate.toIso8601String().substring(0, 10)),
+        dueDay: Value(dueDayOfMonth),
+        installmentAmount: Value(schedule.first.amount),
+        totalInterest: Value(totalReturn - principal),
+        totalReturn: Value(totalReturn),
+        effectiveRateBp: Value(annualRateBp ?? 0),
+        calculationMethod: Value(loanType == 'qarz' ? 'qarz' : 'B'),
+        loanType: Value(loanType),
+        feeAmount: Value(feeAmount),
+        facilityNumber: Value(facilityNumber),
+        paymentLink: Value(paymentLink),
+        status: const Value('active'),
+        createdAt: Value(now),
+        updatedAt: Value(now),
       ));
 
       await _db.batch((batch) {

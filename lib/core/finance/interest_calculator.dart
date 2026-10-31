@@ -20,6 +20,27 @@ class CalcCResult {
 }
 
 class InterestCalculator {
+
+  static int? findAnnualRateBpForInstallment({
+    required int principal,
+    required int termMonths,
+    required int targetInstallment,
+    int maxRateBp = 10000,
+    int maxIterations = 60,
+  }) {
+    if (termMonths <= 0 || principal <= 0) return null;
+    int low = 0, high = maxRateBp, bestRate = 0, bestDiff = 1 << 30;
+    for (int i = 0; i < maxIterations && low <= high; i++) {
+      final mid = (low + high) ~/ 2;
+      final result = calcB(principal: principal, annualRateBp: mid, term: termMonths);
+      final diff = (result.installment - targetInstallment).abs();
+      if (diff < bestDiff) { bestDiff = diff; bestRate = mid; }
+      if (result.installment == targetInstallment) return mid;
+      else if (result.installment < targetInstallment) low = mid + 1;
+      else high = mid - 1;
+    }
+    return bestRate;
+  }
   InterestCalculator._();
 
   static void _check(int principal, int term) {
@@ -89,3 +110,4 @@ class QarzAlHasanehResult {
     required this.finalInstallment,
   });
 }
+
