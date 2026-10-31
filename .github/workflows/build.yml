@@ -12,10 +12,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Increase swap file to 10GB
+    - name: Increase swap file to 8GB
       run: |
         sudo swapoff -a
-        sudo fallocate -l 10G /swapfile
+        sudo fallocate -l 8G /swapfile
         sudo chmod 600 /swapfile
         sudo mkswap /swapfile
         sudo swapon /swapfile
@@ -41,8 +41,10 @@ jobs:
     - name: Install dependencies
       run: flutter pub get
 
-    - name: Build APK (ARM64 only to reduce memory)
-      run: flutter build apk --release --target-platform android-arm64
+    - name: Build APK (ARM64, no minify, low memory)
+      env:
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx3g -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy=in-process -Dfile.encoding=UTF-8"
+      run: flutter build apk --release --target-platform android-arm64 --no-tree-shake-icons
 
     - name: Upload APK
       uses: actions/upload-artifact@v4

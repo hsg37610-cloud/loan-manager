@@ -5,6 +5,12 @@
 }
 
 android {
+        buildTypes {
+            getByName("release") {
+                isMinifyEnabled = false
+                isShrinkResources = false
+            }
+        }
     namespace = "com.loanmanager.loan_manager"
     // Phase 4 plugins (local_auth, flutter_local_notifications, ...) need a recent compileSdk.
     // If AGP complains that this SDK level is unsupported, bump AGP in settings.gradle.kts.
@@ -47,4 +53,5 @@ dependencies {
 flutter {
     source = "../.."
 }
+
 
