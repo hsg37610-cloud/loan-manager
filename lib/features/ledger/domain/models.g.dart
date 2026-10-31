@@ -27,6 +27,10 @@ _Loan _$LoanFromJson(Map<String, dynamic> json) => _Loan(
   status: json['status'] as String? ?? 'active',
   settledDate: json['settled_date'] as String?,
   note: json['note'] as String?,
+  facilityNumber: json['facility_number'] as String?,
+  paymentLink: json['payment_link'] as String?,
+  loanType: json['loan_type'] as String? ?? 'normal',
+  feeAmount: (json['fee_amount'] as num?)?.toInt(),
   createdAt: json['created_at'] as String,
   updatedAt: json['updated_at'] as String,
   deletedAt: json['deleted_at'] as String?,
@@ -53,6 +57,10 @@ Map<String, dynamic> _$LoanToJson(_Loan instance) => <String, dynamic>{
   'status': instance.status,
   'settled_date': instance.settledDate,
   'note': instance.note,
+  'facility_number': instance.facilityNumber,
+  'payment_link': instance.paymentLink,
+  'loan_type': instance.loanType,
+  'fee_amount': instance.feeAmount,
   'created_at': instance.createdAt,
   'updated_at': instance.updatedAt,
   'deleted_at': instance.deletedAt,
@@ -110,69 +118,3 @@ Map<String, dynamic> _$PaymentToJson(_Payment instance) => <String, dynamic>{
   'updated_at': instance.updatedAt,
   'deleted_at': instance.deletedAt,
 };
-
-_PaymentAllocation _$PaymentAllocationFromJson(Map<String, dynamic> json) =>
-    _PaymentAllocation(
-      id: json['id'] as String,
-      paymentId: json['payment_id'] as String,
-      installmentId: json['installment_id'] as String?,
-      amount: (json['amount'] as num).toInt(),
-      createdAt: json['created_at'] as String,
-    );
-
-Map<String, dynamic> _$PaymentAllocationToJson(_PaymentAllocation instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'payment_id': instance.paymentId,
-      'installment_id': instance.installmentId,
-      'amount': instance.amount,
-      'created_at': instance.createdAt,
-    };
-
-_LoanSettlement _$LoanSettlementFromJson(Map<String, dynamic> json) =>
-    _LoanSettlement(
-      id: json['id'] as String,
-      loanId: json['loan_id'] as String,
-      settlementDate: json['settlement_date'] as String,
-      amountPaid: (json['amount_paid'] as num).toInt(),
-      remainingBefore: (json['remaining_before'] as num).toInt(),
-      discountAmount: (json['discount_amount'] as num?)?.toInt() ?? 0,
-      note: json['note'] as String?,
-      createdAt: json['created_at'] as String,
-    );
-
-Map<String, dynamic> _$LoanSettlementToJson(_LoanSettlement instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'loan_id': instance.loanId,
-      'settlement_date': instance.settlementDate,
-      'amount_paid': instance.amountPaid,
-      'remaining_before': instance.remainingBefore,
-      'discount_amount': instance.discountAmount,
-      'note': instance.note,
-      'created_at': instance.createdAt,
-    };
-
-_InstallmentEvent _$InstallmentEventFromJson(Map<String, dynamic> json) =>
-    _InstallmentEvent(
-      id: json['id'] as String,
-      installmentId: json['installment_id'] as String,
-      eventType: json['event_type'] as String,
-      oldDueDate: json['old_due_date'] as String?,
-      newDueDate: json['new_due_date'] as String?,
-      adjustmentAmount: (json['adjustment_amount'] as num?)?.toInt(),
-      reason: json['reason'] as String?,
-      createdAt: json['created_at'] as String,
-    );
-
-Map<String, dynamic> _$InstallmentEventToJson(_InstallmentEvent instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'installment_id': instance.installmentId,
-      'event_type': instance.eventType,
-      'old_due_date': instance.oldDueDate,
-      'new_due_date': instance.newDueDate,
-      'adjustment_amount': instance.adjustmentAmount,
-      'reason': instance.reason,
-      'created_at': instance.createdAt,
-    };

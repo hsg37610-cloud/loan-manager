@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Loan {
 
- String get id; String get userId; String get name; String? get bankName; String? get cardBin; int get principal; int? get annualRateBp; int get termMonths; String get firstDueDate; int get dueDay; int get installmentAmount; int get totalInterest; int get totalReturn; int get effectiveRateBp; String get calculationMethod; int get calculationVersion; String get currency; String get status; String? get settledDate; String? get note; String get createdAt; String get updatedAt; String? get deletedAt;
+ String get id; String get userId; String get name; String? get bankName; String? get cardBin; int get principal; int? get annualRateBp; int get termMonths; String get firstDueDate; int get dueDay; int get installmentAmount; int get totalInterest; int get totalReturn; int get effectiveRateBp; String get calculationMethod; int get calculationVersion; String get currency; String get status; String? get settledDate; String? get note; String? get facilityNumber; String? get paymentLink; String get loanType; int? get feeAmount; String get createdAt; String get updatedAt; String? get deletedAt;
 /// Create a copy of Loan
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +30,20 @@ $LoanCopyWith<Loan> get copyWith => _$LoanCopyWithImpl<Loan>(this as Loan, _$ide
 @override
 bool operator ==(Object other) {
   final _this = this as Loan;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Loan&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.userId, _this.userId) || other.userId == _this.userId)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.bankName, _this.bankName) || other.bankName == _this.bankName)&&(identical(other.cardBin, _this.cardBin) || other.cardBin == _this.cardBin)&&(identical(other.principal, _this.principal) || other.principal == _this.principal)&&(identical(other.annualRateBp, _this.annualRateBp) || other.annualRateBp == _this.annualRateBp)&&(identical(other.termMonths, _this.termMonths) || other.termMonths == _this.termMonths)&&(identical(other.firstDueDate, _this.firstDueDate) || other.firstDueDate == _this.firstDueDate)&&(identical(other.dueDay, _this.dueDay) || other.dueDay == _this.dueDay)&&(identical(other.installmentAmount, _this.installmentAmount) || other.installmentAmount == _this.installmentAmount)&&(identical(other.totalInterest, _this.totalInterest) || other.totalInterest == _this.totalInterest)&&(identical(other.totalReturn, _this.totalReturn) || other.totalReturn == _this.totalReturn)&&(identical(other.effectiveRateBp, _this.effectiveRateBp) || other.effectiveRateBp == _this.effectiveRateBp)&&(identical(other.calculationMethod, _this.calculationMethod) || other.calculationMethod == _this.calculationMethod)&&(identical(other.calculationVersion, _this.calculationVersion) || other.calculationVersion == _this.calculationVersion)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.settledDate, _this.settledDate) || other.settledDate == _this.settledDate)&&(identical(other.note, _this.note) || other.note == _this.note)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.updatedAt, _this.updatedAt) || other.updatedAt == _this.updatedAt)&&(identical(other.deletedAt, _this.deletedAt) || other.deletedAt == _this.deletedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Loan&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.userId, _this.userId) || other.userId == _this.userId)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.bankName, _this.bankName) || other.bankName == _this.bankName)&&(identical(other.cardBin, _this.cardBin) || other.cardBin == _this.cardBin)&&(identical(other.principal, _this.principal) || other.principal == _this.principal)&&(identical(other.annualRateBp, _this.annualRateBp) || other.annualRateBp == _this.annualRateBp)&&(identical(other.termMonths, _this.termMonths) || other.termMonths == _this.termMonths)&&(identical(other.firstDueDate, _this.firstDueDate) || other.firstDueDate == _this.firstDueDate)&&(identical(other.dueDay, _this.dueDay) || other.dueDay == _this.dueDay)&&(identical(other.installmentAmount, _this.installmentAmount) || other.installmentAmount == _this.installmentAmount)&&(identical(other.totalInterest, _this.totalInterest) || other.totalInterest == _this.totalInterest)&&(identical(other.totalReturn, _this.totalReturn) || other.totalReturn == _this.totalReturn)&&(identical(other.effectiveRateBp, _this.effectiveRateBp) || other.effectiveRateBp == _this.effectiveRateBp)&&(identical(other.calculationMethod, _this.calculationMethod) || other.calculationMethod == _this.calculationMethod)&&(identical(other.calculationVersion, _this.calculationVersion) || other.calculationVersion == _this.calculationVersion)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.settledDate, _this.settledDate) || other.settledDate == _this.settledDate)&&(identical(other.note, _this.note) || other.note == _this.note)&&(identical(other.facilityNumber, _this.facilityNumber) || other.facilityNumber == _this.facilityNumber)&&(identical(other.paymentLink, _this.paymentLink) || other.paymentLink == _this.paymentLink)&&(identical(other.loanType, _this.loanType) || other.loanType == _this.loanType)&&(identical(other.feeAmount, _this.feeAmount) || other.feeAmount == _this.feeAmount)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.updatedAt, _this.updatedAt) || other.updatedAt == _this.updatedAt)&&(identical(other.deletedAt, _this.deletedAt) || other.deletedAt == _this.deletedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Loan;
-  return Object.hashAll([runtimeType,_this.id,_this.userId,_this.name,_this.bankName,_this.cardBin,_this.principal,_this.annualRateBp,_this.termMonths,_this.firstDueDate,_this.dueDay,_this.installmentAmount,_this.totalInterest,_this.totalReturn,_this.effectiveRateBp,_this.calculationMethod,_this.calculationVersion,_this.currency,_this.status,_this.settledDate,_this.note,_this.createdAt,_this.updatedAt,_this.deletedAt]);
+  return Object.hashAll([runtimeType,_this.id,_this.userId,_this.name,_this.bankName,_this.cardBin,_this.principal,_this.annualRateBp,_this.termMonths,_this.firstDueDate,_this.dueDay,_this.installmentAmount,_this.totalInterest,_this.totalReturn,_this.effectiveRateBp,_this.calculationMethod,_this.calculationVersion,_this.currency,_this.status,_this.settledDate,_this.note,_this.facilityNumber,_this.paymentLink,_this.loanType,_this.feeAmount,_this.createdAt,_this.updatedAt,_this.deletedAt]);
 }
 
 @override
 String toString() {
   final _this = this as Loan;
-  return 'Loan(id: ${_this.id}, userId: ${_this.userId}, name: ${_this.name}, bankName: ${_this.bankName}, cardBin: ${_this.cardBin}, principal: ${_this.principal}, annualRateBp: ${_this.annualRateBp}, termMonths: ${_this.termMonths}, firstDueDate: ${_this.firstDueDate}, dueDay: ${_this.dueDay}, installmentAmount: ${_this.installmentAmount}, totalInterest: ${_this.totalInterest}, totalReturn: ${_this.totalReturn}, effectiveRateBp: ${_this.effectiveRateBp}, calculationMethod: ${_this.calculationMethod}, calculationVersion: ${_this.calculationVersion}, currency: ${_this.currency}, status: ${_this.status}, settledDate: ${_this.settledDate}, note: ${_this.note}, createdAt: ${_this.createdAt}, updatedAt: ${_this.updatedAt}, deletedAt: ${_this.deletedAt})';
+  return 'Loan(id: ${_this.id}, userId: ${_this.userId}, name: ${_this.name}, bankName: ${_this.bankName}, cardBin: ${_this.cardBin}, principal: ${_this.principal}, annualRateBp: ${_this.annualRateBp}, termMonths: ${_this.termMonths}, firstDueDate: ${_this.firstDueDate}, dueDay: ${_this.dueDay}, installmentAmount: ${_this.installmentAmount}, totalInterest: ${_this.totalInterest}, totalReturn: ${_this.totalReturn}, effectiveRateBp: ${_this.effectiveRateBp}, calculationMethod: ${_this.calculationMethod}, calculationVersion: ${_this.calculationVersion}, currency: ${_this.currency}, status: ${_this.status}, settledDate: ${_this.settledDate}, note: ${_this.note}, facilityNumber: ${_this.facilityNumber}, paymentLink: ${_this.paymentLink}, loanType: ${_this.loanType}, feeAmount: ${_this.feeAmount}, createdAt: ${_this.createdAt}, updatedAt: ${_this.updatedAt}, deletedAt: ${_this.deletedAt})';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $LoanCopyWith<$Res>  {
   factory $LoanCopyWith(Loan value, $Res Function(Loan) _then) = _$LoanCopyWithImpl;
 @useResult
 $Res call({
- String id, String userId, String name, String? bankName, String? cardBin, int principal, int? annualRateBp, int termMonths, String firstDueDate, int dueDay, int installmentAmount, int totalInterest, int totalReturn, int effectiveRateBp, String calculationMethod, int calculationVersion, String currency, String status, String? settledDate, String? note, String createdAt, String updatedAt, String? deletedAt
+ String id, String userId, String name, String? bankName, String? cardBin, int principal, int? annualRateBp, int termMonths, String firstDueDate, int dueDay, int installmentAmount, int totalInterest, int totalReturn, int effectiveRateBp, String calculationMethod, int calculationVersion, String currency, String status, String? settledDate, String? note, String? facilityNumber, String? paymentLink, String loanType, int? feeAmount, String createdAt, String updatedAt, String? deletedAt
 });
 
 
@@ -71,7 +71,7 @@ class _$LoanCopyWithImpl<$Res>
 
 /// Create a copy of Loan
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? userId = null,Object? name = null,Object? bankName = freezed,Object? cardBin = freezed,Object? principal = null,Object? annualRateBp = freezed,Object? termMonths = null,Object? firstDueDate = null,Object? dueDay = null,Object? installmentAmount = null,Object? totalInterest = null,Object? totalReturn = null,Object? effectiveRateBp = null,Object? calculationMethod = null,Object? calculationVersion = null,Object? currency = null,Object? status = null,Object? settledDate = freezed,Object? note = freezed,Object? createdAt = null,Object? updatedAt = null,Object? deletedAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? userId = null,Object? name = null,Object? bankName = freezed,Object? cardBin = freezed,Object? principal = null,Object? annualRateBp = freezed,Object? termMonths = null,Object? firstDueDate = null,Object? dueDay = null,Object? installmentAmount = null,Object? totalInterest = null,Object? totalReturn = null,Object? effectiveRateBp = null,Object? calculationMethod = null,Object? calculationVersion = null,Object? currency = null,Object? status = null,Object? settledDate = freezed,Object? note = freezed,Object? facilityNumber = freezed,Object? paymentLink = freezed,Object? loanType = null,Object? feeAmount = freezed,Object? createdAt = null,Object? updatedAt = null,Object? deletedAt = freezed,}) {
   return _then(Loan(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
@@ -93,7 +93,11 @@ as int,currency: null == currency ? _self.currency : currency // ignore: cast_nu
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as String,settledDate: freezed == settledDate ? _self.settledDate : settledDate // ignore: cast_nullable_to_non_nullable
 as String?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as String?,facilityNumber: freezed == facilityNumber ? _self.facilityNumber : facilityNumber // ignore: cast_nullable_to_non_nullable
+as String?,paymentLink: freezed == paymentLink ? _self.paymentLink : paymentLink // ignore: cast_nullable_to_non_nullable
+as String?,loanType: null == loanType ? _self.loanType : loanType // ignore: cast_nullable_to_non_nullable
+as String,feeAmount: freezed == feeAmount ? _self.feeAmount : feeAmount // ignore: cast_nullable_to_non_nullable
+as int?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
 as String,deletedAt: freezed == deletedAt ? _self.deletedAt : deletedAt // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -181,10 +185,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String userId,  String name,  String? bankName,  String? cardBin,  int principal,  int? annualRateBp,  int termMonths,  String firstDueDate,  int dueDay,  int installmentAmount,  int totalInterest,  int totalReturn,  int effectiveRateBp,  String calculationMethod,  int calculationVersion,  String currency,  String status,  String? settledDate,  String? note,  String createdAt,  String updatedAt,  String? deletedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String userId,  String name,  String? bankName,  String? cardBin,  int principal,  int? annualRateBp,  int termMonths,  String firstDueDate,  int dueDay,  int installmentAmount,  int totalInterest,  int totalReturn,  int effectiveRateBp,  String calculationMethod,  int calculationVersion,  String currency,  String status,  String? settledDate,  String? note,  String? facilityNumber,  String? paymentLink,  String loanType,  int? feeAmount,  String createdAt,  String updatedAt,  String? deletedAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Loan() when $default != null:
-return $default(_that.id,_that.userId,_that.name,_that.bankName,_that.cardBin,_that.principal,_that.annualRateBp,_that.termMonths,_that.firstDueDate,_that.dueDay,_that.installmentAmount,_that.totalInterest,_that.totalReturn,_that.effectiveRateBp,_that.calculationMethod,_that.calculationVersion,_that.currency,_that.status,_that.settledDate,_that.note,_that.createdAt,_that.updatedAt,_that.deletedAt);case _:
+return $default(_that.id,_that.userId,_that.name,_that.bankName,_that.cardBin,_that.principal,_that.annualRateBp,_that.termMonths,_that.firstDueDate,_that.dueDay,_that.installmentAmount,_that.totalInterest,_that.totalReturn,_that.effectiveRateBp,_that.calculationMethod,_that.calculationVersion,_that.currency,_that.status,_that.settledDate,_that.note,_that.facilityNumber,_that.paymentLink,_that.loanType,_that.feeAmount,_that.createdAt,_that.updatedAt,_that.deletedAt);case _:
   return orElse();
 
 }
@@ -202,10 +206,10 @@ return $default(_that.id,_that.userId,_that.name,_that.bankName,_that.cardBin,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String userId,  String name,  String? bankName,  String? cardBin,  int principal,  int? annualRateBp,  int termMonths,  String firstDueDate,  int dueDay,  int installmentAmount,  int totalInterest,  int totalReturn,  int effectiveRateBp,  String calculationMethod,  int calculationVersion,  String currency,  String status,  String? settledDate,  String? note,  String createdAt,  String updatedAt,  String? deletedAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String userId,  String name,  String? bankName,  String? cardBin,  int principal,  int? annualRateBp,  int termMonths,  String firstDueDate,  int dueDay,  int installmentAmount,  int totalInterest,  int totalReturn,  int effectiveRateBp,  String calculationMethod,  int calculationVersion,  String currency,  String status,  String? settledDate,  String? note,  String? facilityNumber,  String? paymentLink,  String loanType,  int? feeAmount,  String createdAt,  String updatedAt,  String? deletedAt)  $default,) {final _that = this;
 switch (_that) {
 case _Loan():
-return $default(_that.id,_that.userId,_that.name,_that.bankName,_that.cardBin,_that.principal,_that.annualRateBp,_that.termMonths,_that.firstDueDate,_that.dueDay,_that.installmentAmount,_that.totalInterest,_that.totalReturn,_that.effectiveRateBp,_that.calculationMethod,_that.calculationVersion,_that.currency,_that.status,_that.settledDate,_that.note,_that.createdAt,_that.updatedAt,_that.deletedAt);case _:
+return $default(_that.id,_that.userId,_that.name,_that.bankName,_that.cardBin,_that.principal,_that.annualRateBp,_that.termMonths,_that.firstDueDate,_that.dueDay,_that.installmentAmount,_that.totalInterest,_that.totalReturn,_that.effectiveRateBp,_that.calculationMethod,_that.calculationVersion,_that.currency,_that.status,_that.settledDate,_that.note,_that.facilityNumber,_that.paymentLink,_that.loanType,_that.feeAmount,_that.createdAt,_that.updatedAt,_that.deletedAt);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -222,10 +226,10 @@ return $default(_that.id,_that.userId,_that.name,_that.bankName,_that.cardBin,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String userId,  String name,  String? bankName,  String? cardBin,  int principal,  int? annualRateBp,  int termMonths,  String firstDueDate,  int dueDay,  int installmentAmount,  int totalInterest,  int totalReturn,  int effectiveRateBp,  String calculationMethod,  int calculationVersion,  String currency,  String status,  String? settledDate,  String? note,  String createdAt,  String updatedAt,  String? deletedAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String userId,  String name,  String? bankName,  String? cardBin,  int principal,  int? annualRateBp,  int termMonths,  String firstDueDate,  int dueDay,  int installmentAmount,  int totalInterest,  int totalReturn,  int effectiveRateBp,  String calculationMethod,  int calculationVersion,  String currency,  String status,  String? settledDate,  String? note,  String? facilityNumber,  String? paymentLink,  String loanType,  int? feeAmount,  String createdAt,  String updatedAt,  String? deletedAt)?  $default,) {final _that = this;
 switch (_that) {
 case _Loan() when $default != null:
-return $default(_that.id,_that.userId,_that.name,_that.bankName,_that.cardBin,_that.principal,_that.annualRateBp,_that.termMonths,_that.firstDueDate,_that.dueDay,_that.installmentAmount,_that.totalInterest,_that.totalReturn,_that.effectiveRateBp,_that.calculationMethod,_that.calculationVersion,_that.currency,_that.status,_that.settledDate,_that.note,_that.createdAt,_that.updatedAt,_that.deletedAt);case _:
+return $default(_that.id,_that.userId,_that.name,_that.bankName,_that.cardBin,_that.principal,_that.annualRateBp,_that.termMonths,_that.firstDueDate,_that.dueDay,_that.installmentAmount,_that.totalInterest,_that.totalReturn,_that.effectiveRateBp,_that.calculationMethod,_that.calculationVersion,_that.currency,_that.status,_that.settledDate,_that.note,_that.facilityNumber,_that.paymentLink,_that.loanType,_that.feeAmount,_that.createdAt,_that.updatedAt,_that.deletedAt);case _:
   return null;
 
 }
@@ -237,7 +241,7 @@ return $default(_that.id,_that.userId,_that.name,_that.bankName,_that.cardBin,_t
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _Loan extends Loan {
-  const _Loan({required this.id, this.userId = 'local', required this.name, this.bankName, this.cardBin, required this.principal, this.annualRateBp, required this.termMonths, required this.firstDueDate, required this.dueDay, required this.installmentAmount, required this.totalInterest, required this.totalReturn, required this.effectiveRateBp, required this.calculationMethod, this.calculationVersion = 1, this.currency = 'IRT', this.status = 'active', this.settledDate, this.note, required this.createdAt, required this.updatedAt, this.deletedAt}): super._();
+  const _Loan({required this.id, this.userId = 'local', required this.name, this.bankName, this.cardBin, required this.principal, this.annualRateBp, required this.termMonths, required this.firstDueDate, required this.dueDay, required this.installmentAmount, required this.totalInterest, required this.totalReturn, required this.effectiveRateBp, required this.calculationMethod, this.calculationVersion = 1, this.currency = 'IRT', this.status = 'active', this.settledDate, this.note, this.facilityNumber, this.paymentLink, this.loanType = 'normal', this.feeAmount, required this.createdAt, required this.updatedAt, this.deletedAt}): super._();
   factory _Loan.fromJson(Map<String, dynamic> json) => _$LoanFromJson(json);
 
 @override final  String id;
@@ -260,6 +264,10 @@ class _Loan extends Loan {
 @override@JsonKey() final  String status;
 @override final  String? settledDate;
 @override final  String? note;
+@override final  String? facilityNumber;
+@override final  String? paymentLink;
+@override@JsonKey() final  String loanType;
+@override final  int? feeAmount;
 @override final  String createdAt;
 @override final  String updatedAt;
 @override final  String? deletedAt;
@@ -277,18 +285,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loan&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.name, name) || other.name == name)&&(identical(other.bankName, bankName) || other.bankName == bankName)&&(identical(other.cardBin, cardBin) || other.cardBin == cardBin)&&(identical(other.principal, principal) || other.principal == principal)&&(identical(other.annualRateBp, annualRateBp) || other.annualRateBp == annualRateBp)&&(identical(other.termMonths, termMonths) || other.termMonths == termMonths)&&(identical(other.firstDueDate, firstDueDate) || other.firstDueDate == firstDueDate)&&(identical(other.dueDay, dueDay) || other.dueDay == dueDay)&&(identical(other.installmentAmount, installmentAmount) || other.installmentAmount == installmentAmount)&&(identical(other.totalInterest, totalInterest) || other.totalInterest == totalInterest)&&(identical(other.totalReturn, totalReturn) || other.totalReturn == totalReturn)&&(identical(other.effectiveRateBp, effectiveRateBp) || other.effectiveRateBp == effectiveRateBp)&&(identical(other.calculationMethod, calculationMethod) || other.calculationMethod == calculationMethod)&&(identical(other.calculationVersion, calculationVersion) || other.calculationVersion == calculationVersion)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.status, status) || other.status == status)&&(identical(other.settledDate, settledDate) || other.settledDate == settledDate)&&(identical(other.note, note) || other.note == note)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.deletedAt, deletedAt) || other.deletedAt == deletedAt));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loan&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.name, name) || other.name == name)&&(identical(other.bankName, bankName) || other.bankName == bankName)&&(identical(other.cardBin, cardBin) || other.cardBin == cardBin)&&(identical(other.principal, principal) || other.principal == principal)&&(identical(other.annualRateBp, annualRateBp) || other.annualRateBp == annualRateBp)&&(identical(other.termMonths, termMonths) || other.termMonths == termMonths)&&(identical(other.firstDueDate, firstDueDate) || other.firstDueDate == firstDueDate)&&(identical(other.dueDay, dueDay) || other.dueDay == dueDay)&&(identical(other.installmentAmount, installmentAmount) || other.installmentAmount == installmentAmount)&&(identical(other.totalInterest, totalInterest) || other.totalInterest == totalInterest)&&(identical(other.totalReturn, totalReturn) || other.totalReturn == totalReturn)&&(identical(other.effectiveRateBp, effectiveRateBp) || other.effectiveRateBp == effectiveRateBp)&&(identical(other.calculationMethod, calculationMethod) || other.calculationMethod == calculationMethod)&&(identical(other.calculationVersion, calculationVersion) || other.calculationVersion == calculationVersion)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.status, status) || other.status == status)&&(identical(other.settledDate, settledDate) || other.settledDate == settledDate)&&(identical(other.note, note) || other.note == note)&&(identical(other.facilityNumber, facilityNumber) || other.facilityNumber == facilityNumber)&&(identical(other.paymentLink, paymentLink) || other.paymentLink == paymentLink)&&(identical(other.loanType, loanType) || other.loanType == loanType)&&(identical(other.feeAmount, feeAmount) || other.feeAmount == feeAmount)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.deletedAt, deletedAt) || other.deletedAt == deletedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hashAll([runtimeType,id,userId,name,bankName,cardBin,principal,annualRateBp,termMonths,firstDueDate,dueDay,installmentAmount,totalInterest,totalReturn,effectiveRateBp,calculationMethod,calculationVersion,currency,status,settledDate,note,createdAt,updatedAt,deletedAt]);
+    return Object.hashAll([runtimeType,id,userId,name,bankName,cardBin,principal,annualRateBp,termMonths,firstDueDate,dueDay,installmentAmount,totalInterest,totalReturn,effectiveRateBp,calculationMethod,calculationVersion,currency,status,settledDate,note,facilityNumber,paymentLink,loanType,feeAmount,createdAt,updatedAt,deletedAt]);
 }
 
 @override
 String toString() {
-    return 'Loan(id: $id, userId: $userId, name: $name, bankName: $bankName, cardBin: $cardBin, principal: $principal, annualRateBp: $annualRateBp, termMonths: $termMonths, firstDueDate: $firstDueDate, dueDay: $dueDay, installmentAmount: $installmentAmount, totalInterest: $totalInterest, totalReturn: $totalReturn, effectiveRateBp: $effectiveRateBp, calculationMethod: $calculationMethod, calculationVersion: $calculationVersion, currency: $currency, status: $status, settledDate: $settledDate, note: $note, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
+    return 'Loan(id: $id, userId: $userId, name: $name, bankName: $bankName, cardBin: $cardBin, principal: $principal, annualRateBp: $annualRateBp, termMonths: $termMonths, firstDueDate: $firstDueDate, dueDay: $dueDay, installmentAmount: $installmentAmount, totalInterest: $totalInterest, totalReturn: $totalReturn, effectiveRateBp: $effectiveRateBp, calculationMethod: $calculationMethod, calculationVersion: $calculationVersion, currency: $currency, status: $status, settledDate: $settledDate, note: $note, facilityNumber: $facilityNumber, paymentLink: $paymentLink, loanType: $loanType, feeAmount: $feeAmount, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
 }
 
 
@@ -299,7 +307,7 @@ abstract mixin class _$LoanCopyWith<$Res> implements $LoanCopyWith<$Res> {
   factory _$LoanCopyWith(_Loan value, $Res Function(_Loan) _then) = __$LoanCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String userId, String name, String? bankName, String? cardBin, int principal, int? annualRateBp, int termMonths, String firstDueDate, int dueDay, int installmentAmount, int totalInterest, int totalReturn, int effectiveRateBp, String calculationMethod, int calculationVersion, String currency, String status, String? settledDate, String? note, String createdAt, String updatedAt, String? deletedAt
+ String id, String userId, String name, String? bankName, String? cardBin, int principal, int? annualRateBp, int termMonths, String firstDueDate, int dueDay, int installmentAmount, int totalInterest, int totalReturn, int effectiveRateBp, String calculationMethod, int calculationVersion, String currency, String status, String? settledDate, String? note, String? facilityNumber, String? paymentLink, String loanType, int? feeAmount, String createdAt, String updatedAt, String? deletedAt
 });
 
 
@@ -316,7 +324,7 @@ class __$LoanCopyWithImpl<$Res>
 
 /// Create a copy of Loan
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? userId = null,Object? name = null,Object? bankName = freezed,Object? cardBin = freezed,Object? principal = null,Object? annualRateBp = freezed,Object? termMonths = null,Object? firstDueDate = null,Object? dueDay = null,Object? installmentAmount = null,Object? totalInterest = null,Object? totalReturn = null,Object? effectiveRateBp = null,Object? calculationMethod = null,Object? calculationVersion = null,Object? currency = null,Object? status = null,Object? settledDate = freezed,Object? note = freezed,Object? createdAt = null,Object? updatedAt = null,Object? deletedAt = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? userId = null,Object? name = null,Object? bankName = freezed,Object? cardBin = freezed,Object? principal = null,Object? annualRateBp = freezed,Object? termMonths = null,Object? firstDueDate = null,Object? dueDay = null,Object? installmentAmount = null,Object? totalInterest = null,Object? totalReturn = null,Object? effectiveRateBp = null,Object? calculationMethod = null,Object? calculationVersion = null,Object? currency = null,Object? status = null,Object? settledDate = freezed,Object? note = freezed,Object? facilityNumber = freezed,Object? paymentLink = freezed,Object? loanType = null,Object? feeAmount = freezed,Object? createdAt = null,Object? updatedAt = null,Object? deletedAt = freezed,}) {
   return _then(_Loan(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
@@ -338,7 +346,11 @@ as int,currency: null == currency ? _self.currency : currency // ignore: cast_nu
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as String,settledDate: freezed == settledDate ? _self.settledDate : settledDate // ignore: cast_nullable_to_non_nullable
 as String?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as String?,facilityNumber: freezed == facilityNumber ? _self.facilityNumber : facilityNumber // ignore: cast_nullable_to_non_nullable
+as String?,paymentLink: freezed == paymentLink ? _self.paymentLink : paymentLink // ignore: cast_nullable_to_non_nullable
+as String?,loanType: null == loanType ? _self.loanType : loanType // ignore: cast_nullable_to_non_nullable
+as String,feeAmount: freezed == feeAmount ? _self.feeAmount : feeAmount // ignore: cast_nullable_to_non_nullable
+as int?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
 as String,deletedAt: freezed == deletedAt ? _self.deletedAt : deletedAt // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -936,870 +948,6 @@ as String?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore:
 as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
 as String,deletedAt: freezed == deletedAt ? _self.deletedAt : deletedAt // ignore: cast_nullable_to_non_nullable
 as String?,
-  ));
-}
-
-
-}
-
-
-/// @nodoc
-mixin _$PaymentAllocation {
-
- String get id; String get paymentId; String? get installmentId; int get amount; String get createdAt;
-/// Create a copy of PaymentAllocation
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$PaymentAllocationCopyWith<PaymentAllocation> get copyWith => _$PaymentAllocationCopyWithImpl<PaymentAllocation>(this as PaymentAllocation, _$identity);
-
-  /// Serializes this PaymentAllocation to a JSON map.
-  Map<String, dynamic> toJson();
-
-
-@override
-bool operator ==(Object other) {
-  final _this = this as PaymentAllocation;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentAllocation&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.paymentId, _this.paymentId) || other.paymentId == _this.paymentId)&&(identical(other.installmentId, _this.installmentId) || other.installmentId == _this.installmentId)&&(identical(other.amount, _this.amount) || other.amount == _this.amount)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode {
-  final _this = this as PaymentAllocation;
-  return Object.hash(runtimeType,_this.id,_this.paymentId,_this.installmentId,_this.amount,_this.createdAt);
-}
-
-@override
-String toString() {
-  final _this = this as PaymentAllocation;
-  return 'PaymentAllocation(id: ${_this.id}, paymentId: ${_this.paymentId}, installmentId: ${_this.installmentId}, amount: ${_this.amount}, createdAt: ${_this.createdAt})';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $PaymentAllocationCopyWith<$Res>  {
-  factory $PaymentAllocationCopyWith(PaymentAllocation value, $Res Function(PaymentAllocation) _then) = _$PaymentAllocationCopyWithImpl;
-@useResult
-$Res call({
- String id, String paymentId, String? installmentId, int amount, String createdAt
-});
-
-
-
-
-}
-/// @nodoc
-class _$PaymentAllocationCopyWithImpl<$Res>
-    implements $PaymentAllocationCopyWith<$Res> {
-  _$PaymentAllocationCopyWithImpl(this._self, this._then);
-
-  final PaymentAllocation _self;
-  final $Res Function(PaymentAllocation) _then;
-
-/// Create a copy of PaymentAllocation
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? paymentId = null,Object? installmentId = freezed,Object? amount = null,Object? createdAt = null,}) {
-  return _then(PaymentAllocation(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,paymentId: null == paymentId ? _self.paymentId : paymentId // ignore: cast_nullable_to_non_nullable
-as String,installmentId: freezed == installmentId ? _self.installmentId : installmentId // ignore: cast_nullable_to_non_nullable
-as String?,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
-as int,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-}
-
-
-/// Adds pattern-matching-related methods to [PaymentAllocation].
-extension PaymentAllocationPatterns on PaymentAllocation {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PaymentAllocation value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _PaymentAllocation() when $default != null:
-return $default(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PaymentAllocation value)  $default,){
-final _that = this;
-switch (_that) {
-case _PaymentAllocation():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PaymentAllocation value)?  $default,){
-final _that = this;
-switch (_that) {
-case _PaymentAllocation() when $default != null:
-return $default(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String paymentId,  String? installmentId,  int amount,  String createdAt)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _PaymentAllocation() when $default != null:
-return $default(_that.id,_that.paymentId,_that.installmentId,_that.amount,_that.createdAt);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String paymentId,  String? installmentId,  int amount,  String createdAt)  $default,) {final _that = this;
-switch (_that) {
-case _PaymentAllocation():
-return $default(_that.id,_that.paymentId,_that.installmentId,_that.amount,_that.createdAt);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String paymentId,  String? installmentId,  int amount,  String createdAt)?  $default,) {final _that = this;
-switch (_that) {
-case _PaymentAllocation() when $default != null:
-return $default(_that.id,_that.paymentId,_that.installmentId,_that.amount,_that.createdAt);case _:
-  return null;
-
-}
-}
-
-}
-
-/// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class _PaymentAllocation implements PaymentAllocation {
-  const _PaymentAllocation({required this.id, required this.paymentId, this.installmentId, required this.amount, required this.createdAt});
-  factory _PaymentAllocation.fromJson(Map<String, dynamic> json) => _$PaymentAllocationFromJson(json);
-
-@override final  String id;
-@override final  String paymentId;
-@override final  String? installmentId;
-@override final  int amount;
-@override final  String createdAt;
-
-/// Create a copy of PaymentAllocation
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$PaymentAllocationCopyWith<_PaymentAllocation> get copyWith => __$PaymentAllocationCopyWithImpl<_PaymentAllocation>(this, _$identity);
-
-@override
-Map<String, dynamic> toJson() {
-  return _$PaymentAllocationToJson(this, );
-}
-
-@override
-bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentAllocation&&(identical(other.id, id) || other.id == id)&&(identical(other.paymentId, paymentId) || other.paymentId == paymentId)&&(identical(other.installmentId, installmentId) || other.installmentId == installmentId)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode {
-    return Object.hash(runtimeType,id,paymentId,installmentId,amount,createdAt);
-}
-
-@override
-String toString() {
-    return 'PaymentAllocation(id: $id, paymentId: $paymentId, installmentId: $installmentId, amount: $amount, createdAt: $createdAt)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$PaymentAllocationCopyWith<$Res> implements $PaymentAllocationCopyWith<$Res> {
-  factory _$PaymentAllocationCopyWith(_PaymentAllocation value, $Res Function(_PaymentAllocation) _then) = __$PaymentAllocationCopyWithImpl;
-@override @useResult
-$Res call({
- String id, String paymentId, String? installmentId, int amount, String createdAt
-});
-
-
-
-
-}
-/// @nodoc
-class __$PaymentAllocationCopyWithImpl<$Res>
-    implements _$PaymentAllocationCopyWith<$Res> {
-  __$PaymentAllocationCopyWithImpl(this._self, this._then);
-
-  final _PaymentAllocation _self;
-  final $Res Function(_PaymentAllocation) _then;
-
-/// Create a copy of PaymentAllocation
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? paymentId = null,Object? installmentId = freezed,Object? amount = null,Object? createdAt = null,}) {
-  return _then(_PaymentAllocation(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,paymentId: null == paymentId ? _self.paymentId : paymentId // ignore: cast_nullable_to_non_nullable
-as String,installmentId: freezed == installmentId ? _self.installmentId : installmentId // ignore: cast_nullable_to_non_nullable
-as String?,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
-as int,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
-}
-
-
-/// @nodoc
-mixin _$LoanSettlement {
-
- String get id; String get loanId; String get settlementDate; int get amountPaid; int get remainingBefore; int get discountAmount; String? get note; String get createdAt;
-/// Create a copy of LoanSettlement
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$LoanSettlementCopyWith<LoanSettlement> get copyWith => _$LoanSettlementCopyWithImpl<LoanSettlement>(this as LoanSettlement, _$identity);
-
-  /// Serializes this LoanSettlement to a JSON map.
-  Map<String, dynamic> toJson();
-
-
-@override
-bool operator ==(Object other) {
-  final _this = this as LoanSettlement;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoanSettlement&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.loanId, _this.loanId) || other.loanId == _this.loanId)&&(identical(other.settlementDate, _this.settlementDate) || other.settlementDate == _this.settlementDate)&&(identical(other.amountPaid, _this.amountPaid) || other.amountPaid == _this.amountPaid)&&(identical(other.remainingBefore, _this.remainingBefore) || other.remainingBefore == _this.remainingBefore)&&(identical(other.discountAmount, _this.discountAmount) || other.discountAmount == _this.discountAmount)&&(identical(other.note, _this.note) || other.note == _this.note)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode {
-  final _this = this as LoanSettlement;
-  return Object.hash(runtimeType,_this.id,_this.loanId,_this.settlementDate,_this.amountPaid,_this.remainingBefore,_this.discountAmount,_this.note,_this.createdAt);
-}
-
-@override
-String toString() {
-  final _this = this as LoanSettlement;
-  return 'LoanSettlement(id: ${_this.id}, loanId: ${_this.loanId}, settlementDate: ${_this.settlementDate}, amountPaid: ${_this.amountPaid}, remainingBefore: ${_this.remainingBefore}, discountAmount: ${_this.discountAmount}, note: ${_this.note}, createdAt: ${_this.createdAt})';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $LoanSettlementCopyWith<$Res>  {
-  factory $LoanSettlementCopyWith(LoanSettlement value, $Res Function(LoanSettlement) _then) = _$LoanSettlementCopyWithImpl;
-@useResult
-$Res call({
- String id, String loanId, String settlementDate, int amountPaid, int remainingBefore, int discountAmount, String? note, String createdAt
-});
-
-
-
-
-}
-/// @nodoc
-class _$LoanSettlementCopyWithImpl<$Res>
-    implements $LoanSettlementCopyWith<$Res> {
-  _$LoanSettlementCopyWithImpl(this._self, this._then);
-
-  final LoanSettlement _self;
-  final $Res Function(LoanSettlement) _then;
-
-/// Create a copy of LoanSettlement
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? loanId = null,Object? settlementDate = null,Object? amountPaid = null,Object? remainingBefore = null,Object? discountAmount = null,Object? note = freezed,Object? createdAt = null,}) {
-  return _then(LoanSettlement(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,loanId: null == loanId ? _self.loanId : loanId // ignore: cast_nullable_to_non_nullable
-as String,settlementDate: null == settlementDate ? _self.settlementDate : settlementDate // ignore: cast_nullable_to_non_nullable
-as String,amountPaid: null == amountPaid ? _self.amountPaid : amountPaid // ignore: cast_nullable_to_non_nullable
-as int,remainingBefore: null == remainingBefore ? _self.remainingBefore : remainingBefore // ignore: cast_nullable_to_non_nullable
-as int,discountAmount: null == discountAmount ? _self.discountAmount : discountAmount // ignore: cast_nullable_to_non_nullable
-as int,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-}
-
-
-/// Adds pattern-matching-related methods to [LoanSettlement].
-extension LoanSettlementPatterns on LoanSettlement {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _LoanSettlement value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _LoanSettlement() when $default != null:
-return $default(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _LoanSettlement value)  $default,){
-final _that = this;
-switch (_that) {
-case _LoanSettlement():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _LoanSettlement value)?  $default,){
-final _that = this;
-switch (_that) {
-case _LoanSettlement() when $default != null:
-return $default(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String loanId,  String settlementDate,  int amountPaid,  int remainingBefore,  int discountAmount,  String? note,  String createdAt)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _LoanSettlement() when $default != null:
-return $default(_that.id,_that.loanId,_that.settlementDate,_that.amountPaid,_that.remainingBefore,_that.discountAmount,_that.note,_that.createdAt);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String loanId,  String settlementDate,  int amountPaid,  int remainingBefore,  int discountAmount,  String? note,  String createdAt)  $default,) {final _that = this;
-switch (_that) {
-case _LoanSettlement():
-return $default(_that.id,_that.loanId,_that.settlementDate,_that.amountPaid,_that.remainingBefore,_that.discountAmount,_that.note,_that.createdAt);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String loanId,  String settlementDate,  int amountPaid,  int remainingBefore,  int discountAmount,  String? note,  String createdAt)?  $default,) {final _that = this;
-switch (_that) {
-case _LoanSettlement() when $default != null:
-return $default(_that.id,_that.loanId,_that.settlementDate,_that.amountPaid,_that.remainingBefore,_that.discountAmount,_that.note,_that.createdAt);case _:
-  return null;
-
-}
-}
-
-}
-
-/// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class _LoanSettlement implements LoanSettlement {
-  const _LoanSettlement({required this.id, required this.loanId, required this.settlementDate, required this.amountPaid, required this.remainingBefore, this.discountAmount = 0, this.note, required this.createdAt});
-  factory _LoanSettlement.fromJson(Map<String, dynamic> json) => _$LoanSettlementFromJson(json);
-
-@override final  String id;
-@override final  String loanId;
-@override final  String settlementDate;
-@override final  int amountPaid;
-@override final  int remainingBefore;
-@override@JsonKey() final  int discountAmount;
-@override final  String? note;
-@override final  String createdAt;
-
-/// Create a copy of LoanSettlement
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$LoanSettlementCopyWith<_LoanSettlement> get copyWith => __$LoanSettlementCopyWithImpl<_LoanSettlement>(this, _$identity);
-
-@override
-Map<String, dynamic> toJson() {
-  return _$LoanSettlementToJson(this, );
-}
-
-@override
-bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoanSettlement&&(identical(other.id, id) || other.id == id)&&(identical(other.loanId, loanId) || other.loanId == loanId)&&(identical(other.settlementDate, settlementDate) || other.settlementDate == settlementDate)&&(identical(other.amountPaid, amountPaid) || other.amountPaid == amountPaid)&&(identical(other.remainingBefore, remainingBefore) || other.remainingBefore == remainingBefore)&&(identical(other.discountAmount, discountAmount) || other.discountAmount == discountAmount)&&(identical(other.note, note) || other.note == note)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode {
-    return Object.hash(runtimeType,id,loanId,settlementDate,amountPaid,remainingBefore,discountAmount,note,createdAt);
-}
-
-@override
-String toString() {
-    return 'LoanSettlement(id: $id, loanId: $loanId, settlementDate: $settlementDate, amountPaid: $amountPaid, remainingBefore: $remainingBefore, discountAmount: $discountAmount, note: $note, createdAt: $createdAt)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$LoanSettlementCopyWith<$Res> implements $LoanSettlementCopyWith<$Res> {
-  factory _$LoanSettlementCopyWith(_LoanSettlement value, $Res Function(_LoanSettlement) _then) = __$LoanSettlementCopyWithImpl;
-@override @useResult
-$Res call({
- String id, String loanId, String settlementDate, int amountPaid, int remainingBefore, int discountAmount, String? note, String createdAt
-});
-
-
-
-
-}
-/// @nodoc
-class __$LoanSettlementCopyWithImpl<$Res>
-    implements _$LoanSettlementCopyWith<$Res> {
-  __$LoanSettlementCopyWithImpl(this._self, this._then);
-
-  final _LoanSettlement _self;
-  final $Res Function(_LoanSettlement) _then;
-
-/// Create a copy of LoanSettlement
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? loanId = null,Object? settlementDate = null,Object? amountPaid = null,Object? remainingBefore = null,Object? discountAmount = null,Object? note = freezed,Object? createdAt = null,}) {
-  return _then(_LoanSettlement(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,loanId: null == loanId ? _self.loanId : loanId // ignore: cast_nullable_to_non_nullable
-as String,settlementDate: null == settlementDate ? _self.settlementDate : settlementDate // ignore: cast_nullable_to_non_nullable
-as String,amountPaid: null == amountPaid ? _self.amountPaid : amountPaid // ignore: cast_nullable_to_non_nullable
-as int,remainingBefore: null == remainingBefore ? _self.remainingBefore : remainingBefore // ignore: cast_nullable_to_non_nullable
-as int,discountAmount: null == discountAmount ? _self.discountAmount : discountAmount // ignore: cast_nullable_to_non_nullable
-as int,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
-}
-
-
-/// @nodoc
-mixin _$InstallmentEvent {
-
- String get id; String get installmentId; String get eventType; String? get oldDueDate; String? get newDueDate; int? get adjustmentAmount; String? get reason; String get createdAt;
-/// Create a copy of InstallmentEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$InstallmentEventCopyWith<InstallmentEvent> get copyWith => _$InstallmentEventCopyWithImpl<InstallmentEvent>(this as InstallmentEvent, _$identity);
-
-  /// Serializes this InstallmentEvent to a JSON map.
-  Map<String, dynamic> toJson();
-
-
-@override
-bool operator ==(Object other) {
-  final _this = this as InstallmentEvent;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstallmentEvent&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.installmentId, _this.installmentId) || other.installmentId == _this.installmentId)&&(identical(other.eventType, _this.eventType) || other.eventType == _this.eventType)&&(identical(other.oldDueDate, _this.oldDueDate) || other.oldDueDate == _this.oldDueDate)&&(identical(other.newDueDate, _this.newDueDate) || other.newDueDate == _this.newDueDate)&&(identical(other.adjustmentAmount, _this.adjustmentAmount) || other.adjustmentAmount == _this.adjustmentAmount)&&(identical(other.reason, _this.reason) || other.reason == _this.reason)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode {
-  final _this = this as InstallmentEvent;
-  return Object.hash(runtimeType,_this.id,_this.installmentId,_this.eventType,_this.oldDueDate,_this.newDueDate,_this.adjustmentAmount,_this.reason,_this.createdAt);
-}
-
-@override
-String toString() {
-  final _this = this as InstallmentEvent;
-  return 'InstallmentEvent(id: ${_this.id}, installmentId: ${_this.installmentId}, eventType: ${_this.eventType}, oldDueDate: ${_this.oldDueDate}, newDueDate: ${_this.newDueDate}, adjustmentAmount: ${_this.adjustmentAmount}, reason: ${_this.reason}, createdAt: ${_this.createdAt})';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $InstallmentEventCopyWith<$Res>  {
-  factory $InstallmentEventCopyWith(InstallmentEvent value, $Res Function(InstallmentEvent) _then) = _$InstallmentEventCopyWithImpl;
-@useResult
-$Res call({
- String id, String installmentId, String eventType, String? oldDueDate, String? newDueDate, int? adjustmentAmount, String? reason, String createdAt
-});
-
-
-
-
-}
-/// @nodoc
-class _$InstallmentEventCopyWithImpl<$Res>
-    implements $InstallmentEventCopyWith<$Res> {
-  _$InstallmentEventCopyWithImpl(this._self, this._then);
-
-  final InstallmentEvent _self;
-  final $Res Function(InstallmentEvent) _then;
-
-/// Create a copy of InstallmentEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? installmentId = null,Object? eventType = null,Object? oldDueDate = freezed,Object? newDueDate = freezed,Object? adjustmentAmount = freezed,Object? reason = freezed,Object? createdAt = null,}) {
-  return _then(InstallmentEvent(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,installmentId: null == installmentId ? _self.installmentId : installmentId // ignore: cast_nullable_to_non_nullable
-as String,eventType: null == eventType ? _self.eventType : eventType // ignore: cast_nullable_to_non_nullable
-as String,oldDueDate: freezed == oldDueDate ? _self.oldDueDate : oldDueDate // ignore: cast_nullable_to_non_nullable
-as String?,newDueDate: freezed == newDueDate ? _self.newDueDate : newDueDate // ignore: cast_nullable_to_non_nullable
-as String?,adjustmentAmount: freezed == adjustmentAmount ? _self.adjustmentAmount : adjustmentAmount // ignore: cast_nullable_to_non_nullable
-as int?,reason: freezed == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-}
-
-
-/// Adds pattern-matching-related methods to [InstallmentEvent].
-extension InstallmentEventPatterns on InstallmentEvent {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _InstallmentEvent value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _InstallmentEvent() when $default != null:
-return $default(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _InstallmentEvent value)  $default,){
-final _that = this;
-switch (_that) {
-case _InstallmentEvent():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _InstallmentEvent value)?  $default,){
-final _that = this;
-switch (_that) {
-case _InstallmentEvent() when $default != null:
-return $default(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String installmentId,  String eventType,  String? oldDueDate,  String? newDueDate,  int? adjustmentAmount,  String? reason,  String createdAt)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _InstallmentEvent() when $default != null:
-return $default(_that.id,_that.installmentId,_that.eventType,_that.oldDueDate,_that.newDueDate,_that.adjustmentAmount,_that.reason,_that.createdAt);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String installmentId,  String eventType,  String? oldDueDate,  String? newDueDate,  int? adjustmentAmount,  String? reason,  String createdAt)  $default,) {final _that = this;
-switch (_that) {
-case _InstallmentEvent():
-return $default(_that.id,_that.installmentId,_that.eventType,_that.oldDueDate,_that.newDueDate,_that.adjustmentAmount,_that.reason,_that.createdAt);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String installmentId,  String eventType,  String? oldDueDate,  String? newDueDate,  int? adjustmentAmount,  String? reason,  String createdAt)?  $default,) {final _that = this;
-switch (_that) {
-case _InstallmentEvent() when $default != null:
-return $default(_that.id,_that.installmentId,_that.eventType,_that.oldDueDate,_that.newDueDate,_that.adjustmentAmount,_that.reason,_that.createdAt);case _:
-  return null;
-
-}
-}
-
-}
-
-/// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class _InstallmentEvent implements InstallmentEvent {
-  const _InstallmentEvent({required this.id, required this.installmentId, required this.eventType, this.oldDueDate, this.newDueDate, this.adjustmentAmount, this.reason, required this.createdAt});
-  factory _InstallmentEvent.fromJson(Map<String, dynamic> json) => _$InstallmentEventFromJson(json);
-
-@override final  String id;
-@override final  String installmentId;
-@override final  String eventType;
-@override final  String? oldDueDate;
-@override final  String? newDueDate;
-@override final  int? adjustmentAmount;
-@override final  String? reason;
-@override final  String createdAt;
-
-/// Create a copy of InstallmentEvent
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$InstallmentEventCopyWith<_InstallmentEvent> get copyWith => __$InstallmentEventCopyWithImpl<_InstallmentEvent>(this, _$identity);
-
-@override
-Map<String, dynamic> toJson() {
-  return _$InstallmentEventToJson(this, );
-}
-
-@override
-bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _InstallmentEvent&&(identical(other.id, id) || other.id == id)&&(identical(other.installmentId, installmentId) || other.installmentId == installmentId)&&(identical(other.eventType, eventType) || other.eventType == eventType)&&(identical(other.oldDueDate, oldDueDate) || other.oldDueDate == oldDueDate)&&(identical(other.newDueDate, newDueDate) || other.newDueDate == newDueDate)&&(identical(other.adjustmentAmount, adjustmentAmount) || other.adjustmentAmount == adjustmentAmount)&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode {
-    return Object.hash(runtimeType,id,installmentId,eventType,oldDueDate,newDueDate,adjustmentAmount,reason,createdAt);
-}
-
-@override
-String toString() {
-    return 'InstallmentEvent(id: $id, installmentId: $installmentId, eventType: $eventType, oldDueDate: $oldDueDate, newDueDate: $newDueDate, adjustmentAmount: $adjustmentAmount, reason: $reason, createdAt: $createdAt)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$InstallmentEventCopyWith<$Res> implements $InstallmentEventCopyWith<$Res> {
-  factory _$InstallmentEventCopyWith(_InstallmentEvent value, $Res Function(_InstallmentEvent) _then) = __$InstallmentEventCopyWithImpl;
-@override @useResult
-$Res call({
- String id, String installmentId, String eventType, String? oldDueDate, String? newDueDate, int? adjustmentAmount, String? reason, String createdAt
-});
-
-
-
-
-}
-/// @nodoc
-class __$InstallmentEventCopyWithImpl<$Res>
-    implements _$InstallmentEventCopyWith<$Res> {
-  __$InstallmentEventCopyWithImpl(this._self, this._then);
-
-  final _InstallmentEvent _self;
-  final $Res Function(_InstallmentEvent) _then;
-
-/// Create a copy of InstallmentEvent
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? installmentId = null,Object? eventType = null,Object? oldDueDate = freezed,Object? newDueDate = freezed,Object? adjustmentAmount = freezed,Object? reason = freezed,Object? createdAt = null,}) {
-  return _then(_InstallmentEvent(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,installmentId: null == installmentId ? _self.installmentId : installmentId // ignore: cast_nullable_to_non_nullable
-as String,eventType: null == eventType ? _self.eventType : eventType // ignore: cast_nullable_to_non_nullable
-as String,oldDueDate: freezed == oldDueDate ? _self.oldDueDate : oldDueDate // ignore: cast_nullable_to_non_nullable
-as String?,newDueDate: freezed == newDueDate ? _self.newDueDate : newDueDate // ignore: cast_nullable_to_non_nullable
-as String?,adjustmentAmount: freezed == adjustmentAmount ? _self.adjustmentAmount : adjustmentAmount // ignore: cast_nullable_to_non_nullable
-as int?,reason: freezed == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,
   ));
 }
 

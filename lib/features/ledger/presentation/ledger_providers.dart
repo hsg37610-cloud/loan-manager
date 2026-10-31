@@ -32,11 +32,24 @@ class RecordPayment extends _$RecordPayment {
 class CreateLoan extends _$CreateLoan {
   @override
   FutureOr<String?> build() => null;
-  Future<String?> submit({required String name, required String bankName, required int principal, required int annualRateBp, required int termMonths, required DateTime firstDueDate, required int dueDayOfMonth}) async {
+  Future<String?> submit({required String name, required String bankName, required int principal, required int? annualRateBp, required int? feeAmount, required String loanType, required int termMonths, required DateTime firstDueDate, required int dueDayOfMonth, String? facilityNumber, String? paymentLink}) async {
     state = const AsyncLoading();
     state = await AsyncValue.guard<String?>(() => ref.read(ledgerRepositoryProvider).createLoan(
-      name: name, bankName: bankName, principal: principal, annualRateBp: annualRateBp, termMonths: termMonths, firstDueDate: firstDueDate, dueDayOfMonth: dueDayOfMonth,
+      name: name, bankName: bankName, principal: principal, annualRateBp: annualRateBp, feeAmount: feeAmount, loanType: loanType, termMonths: termMonths, firstDueDate: firstDueDate, dueDayOfMonth: dueDayOfMonth, facilityNumber: facilityNumber, paymentLink: paymentLink,
     ));
-    return state.value;
+    return state.valueOrNull;
+  }
+}
+
+@riverpod
+class UpdateLoan extends _$UpdateLoan {
+  @override
+  FutureOr<void> build() {}
+  Future<bool> submit({required String loanId, required String name, required String bankName, required int principal, required int? annualRateBp, required int? feeAmount, required String loanType, required int termMonths, required DateTime firstDueDate, required int dueDayOfMonth, String? facilityNumber, String? paymentLink}) async {
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() => ref.read(ledgerRepositoryProvider).updateLoan(
+      loanId: loanId, name: name, bankName: bankName, principal: principal, annualRateBp: annualRateBp, feeAmount: feeAmount, loanType: loanType, termMonths: termMonths, firstDueDate: firstDueDate, dueDayOfMonth: dueDayOfMonth, facilityNumber: facilityNumber, paymentLink: paymentLink,
+    ));
+    return !state.hasError;
   }
 }

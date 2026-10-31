@@ -28,6 +28,10 @@ abstract class Loan with _$Loan {
     @Default('active') String status,
     String? settledDate,
     String? note,
+    String? facilityNumber,
+    String? paymentLink,
+    @Default('normal') String loanType,
+    int? feeAmount,
     required String createdAt,
     required String updatedAt,
     String? deletedAt,
@@ -79,49 +83,4 @@ abstract class Payment with _$Payment {
   }) = _Payment;
   factory Payment.fromJson(Map<String, dynamic> json) => _$PaymentFromJson(json);
   bool get isDeleted => deletedAt != null;
-}
-
-@freezed
-abstract class PaymentAllocation with _$PaymentAllocation {
-  @JsonSerializable(fieldRename: FieldRename.snake)
-  const factory PaymentAllocation({
-    required String id,
-    required String paymentId,
-    String? installmentId,
-    required int amount,
-    required String createdAt,
-  }) = _PaymentAllocation;
-  factory PaymentAllocation.fromJson(Map<String, dynamic> json) => _$PaymentAllocationFromJson(json);
-}
-
-@freezed
-abstract class LoanSettlement with _$LoanSettlement {
-  @JsonSerializable(fieldRename: FieldRename.snake)
-  const factory LoanSettlement({
-    required String id,
-    required String loanId,
-    required String settlementDate,
-    required int amountPaid,
-    required int remainingBefore,
-    @Default(0) int discountAmount,
-    String? note,
-    required String createdAt,
-  }) = _LoanSettlement;
-  factory LoanSettlement.fromJson(Map<String, dynamic> json) => _$LoanSettlementFromJson(json);
-}
-
-@freezed
-abstract class InstallmentEvent with _$InstallmentEvent {
-  @JsonSerializable(fieldRename: FieldRename.snake)
-  const factory InstallmentEvent({
-    required String id,
-    required String installmentId,
-    required String eventType,
-    String? oldDueDate,
-    String? newDueDate,
-    int? adjustmentAmount,
-    String? reason,
-    required String createdAt,
-  }) = _InstallmentEvent;
-  factory InstallmentEvent.fromJson(Map<String, dynamic> json) => _$InstallmentEventFromJson(json);
 }

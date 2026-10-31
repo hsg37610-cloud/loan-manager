@@ -307,7 +307,7 @@ final class CreateLoanProvider
   CreateLoan create() => CreateLoan();
 }
 
-String _$createLoanHash() => r'fe0f38f6a577efa59fc9763bf738424c47ee93be';
+String _$createLoanHash() => r'588f4a3aa1f6dbfdcd2baf18325a329b10e4bde4';
 
 abstract class _$CreateLoan extends $AsyncNotifier<String?> {
   FutureOr<String?> build();
@@ -320,6 +320,50 @@ abstract class _$CreateLoan extends $AsyncNotifier<String?> {
             as $ClassProviderElement<
               AnyNotifier<AsyncValue<String?>, String?>,
               AsyncValue<String?>,
+              Object?,
+              Object?
+            >;
+    return element.handleCreate(ref, build);
+  }
+}
+
+@ProviderFor(UpdateLoan)
+final updateLoanProvider = UpdateLoanProvider._();
+
+final class UpdateLoanProvider
+    extends $AsyncNotifierProvider<UpdateLoan, void> {
+  UpdateLoanProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'updateLoanProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$updateLoanHash();
+
+  @$internal
+  @override
+  UpdateLoan create() => UpdateLoan();
+}
+
+String _$updateLoanHash() => r'1d2c50a6a0397e1f2f63e8d91f9185a6dbd0d4ba';
+
+abstract class _$UpdateLoan extends $AsyncNotifier<void> {
+  FutureOr<void> build();
+  @$mustCallSuper
+  @override
+  WhenComplete runBuild() {
+    final ref = this.ref as $Ref<AsyncValue<void>, void>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<void>, void>,
+              AsyncValue<void>,
               Object?,
               Object?
             >;

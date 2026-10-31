@@ -20,8 +20,7 @@ class LoanListScreen extends ConsumerWidget {
       appBar: AppBar(title: const Text('وام‌ها'), actions: const [_ThemeModeButton()]),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => context.pushNamed(AppRoutes.addLoan),
-        icon: const Icon(Icons.add),
-        label: const Text('افزودن وام'),
+        icon: const Icon(Icons.add), label: const Text('افزودن وام'),
       ),
       body: loansAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
@@ -48,8 +47,8 @@ class _LoanCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final installments = ref.watch(loanInstallmentsProvider(loan.id));
-    final total = installments.value?.length ?? loan.termMonths;
-    final paid = installments.value?.where((i) => i.isFullyPaid).length ?? 0;
+    final total = installments.valueOrNull?.length ?? loan.termMonths;
+    final paid = installments.valueOrNull?.where((i) => i.isFullyPaid).length ?? 0;
     final progress = total == 0 ? 0.0 : paid / total;
 
     return Card(
@@ -61,7 +60,13 @@ class _LoanCard extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(loan.name, style: theme.textTheme.titleMedium, maxLines: 1, overflow: TextOverflow.ellipsis),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(child: Text(loan.name, style: theme.textTheme.titleMedium, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                  IconButton(icon: const Icon(Icons.edit, size: 20), onPressed: () => context.push('/edit-loan/${loan.id}')),
+                ],
+              ),
               if (loan.bankName != null && loan.bankName!.isNotEmpty)
                 Text(loan.bankName!, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
               const SizedBox(height: 12),
