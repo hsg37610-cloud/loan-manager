@@ -1,4 +1,4 @@
-﻿name: Build Flutter APK
+name: Build Flutter APK
 
 on:
   push:
@@ -39,34 +39,13 @@ jobs:
         channel: 'stable'
         cache: true
 
-    - name: Configure Gradle mirrors
-      run: |
-        mkdir -p ~/.gradle
-        cat > ~/.gradle/init.gradle << 'EOF'
-        allprojects {
-            buildscript {
-                repositories {
-                    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-                    maven { url 'https://maven.aliyun.com/repository/google' }
-                    google()
-                    mavenCentral()
-                }
-            }
-            repositories {
-                maven { url 'https://maven.aliyun.com/repository/public' }
-                maven { url 'https://maven.aliyun.com/repository/google' }
-                google()
-                mavenCentral()
-            }
-        }
-        EOF
-
     - name: Install dependencies
       run: flutter pub get
 
-    - name: Build APK (ARM64, low memory)
+    - name: Build APK (ARM64, optimized memory)
       env:
-        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx3g -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy=in-process"
+        CI: "true"
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx5g -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy=in-process -Dorg.gradle.kotlin.dsl.internal.io.timeout=120000"
       run: flutter build apk --release --target-platform android-arm64 --no-tree-shake-icons
 
     - name: Upload APK

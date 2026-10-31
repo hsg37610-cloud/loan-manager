@@ -10,12 +10,20 @@ pluginManagement {
     includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
 
     repositories {
-        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
-        maven { url = uri("https://maven.aliyun.com/repository/google") }
-        maven { url = uri("https://maven.aliyun.com/repository/public") }
-        google()
-        mavenCentral()
-        gradlePluginPortal()
+        // اگر در محیط CI هستیم، مستقیماً از منابع رسمی استفاده کن
+        if (System.getenv("CI") != null) {
+            google()
+            mavenCentral()
+            gradlePluginPortal()
+        } else {
+            // محیط لوکال (ایران): ابتدا آینه‌های ایرانی
+            maven { url = uri("https://maven.myket.ir") }
+            maven { url = uri("https://gradle.iranrepo.ir") }
+            maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
+            google()
+            mavenCentral()
+            gradlePluginPortal()
+        }
     }
 }
 
