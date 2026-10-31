@@ -4,9 +4,9 @@ part 'models.freezed.dart';
 part 'models.g.dart';
 
 @freezed
+@JsonSerializable(fieldRename: FieldRename.snake)
 abstract class Loan with _$Loan {
   const Loan._();
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Loan({
     required String id,
     @Default('local') String userId,
@@ -42,9 +42,9 @@ abstract class Loan with _$Loan {
 }
 
 @freezed
+@JsonSerializable(fieldRename: FieldRename.snake)
 abstract class Installment with _$Installment {
   const Installment._();
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Installment({
     required String id,
     required String loanId,
@@ -66,9 +66,9 @@ abstract class Installment with _$Installment {
 }
 
 @freezed
+@JsonSerializable(fieldRename: FieldRename.snake)
 abstract class Payment with _$Payment {
   const Payment._();
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Payment({
     required String id,
     required String loanId,

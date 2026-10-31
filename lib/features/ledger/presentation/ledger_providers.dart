@@ -16,7 +16,11 @@ Stream<List<Loan>> activeLoans(Ref ref) => ref.watch(ledgerRepositoryProvider).w
 Stream<Loan?> loanById(Ref ref, String loanId) => ref.watch(ledgerRepositoryProvider).watchLoan(loanId);
 
 @riverpod
-Stream<List<Installment>> loanInstallments(Ref ref, String loanId) => ref.watch(ledgerRepositoryProvider).watchInstallmentsForLoan(loanId);
+Stream<List<Installment>> allInstallments(Ref ref) =>
+    ref.watch(ledgerRepositoryProvider).watchAllInstallments();
+
+  @riverpod
+  Stream<List<Installment>> loanInstallments(Ref ref, String loanId) => ref.watch(ledgerRepositoryProvider).watchInstallmentsForLoan(loanId);
 
 // NOTE (Phase 4): in the notifiers below, `ref.read(...)` is done BEFORE the first
 // `await` and the objects are captured in locals. These providers are auto-dispose,
@@ -78,3 +82,4 @@ class UpdateLoan extends _$UpdateLoan {
     return !state.hasError;
   }
 }
+

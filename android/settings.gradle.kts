@@ -1,4 +1,4 @@
-﻿pluginManagement {
+pluginManagement {
     val flutterSdkPath = run {
         val properties = java.util.Properties()
         file("local.properties").inputStream().use { properties.load(it) }
@@ -10,9 +10,11 @@
     includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
 
     repositories {
+        maven { url = uri("https://mirror-maven.runflare.com/gradle-plugins/") }
+        maven { url = uri("https://maven.myket.ir") }
+        maven { url = uri("https://gradle.iranrepo.ir") }
         google()
         mavenCentral()
-        gradlePluginPortal()
     }
 }
 

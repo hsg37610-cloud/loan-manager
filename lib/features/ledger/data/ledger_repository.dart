@@ -31,6 +31,11 @@ class LedgerRepository {
     return query.watch().map((rows) => rows.toDomainList());
   }
 
+  Stream<List<Installment>> watchAllInstallments() {
+    final query = _db.select(_db.installments)..orderBy([(t) => OrderingTerm.asc(t.dueDate)]);
+    return query.watch().map((rows) => rows.toDomainList());
+  }
+
   Stream<List<Installment>> watchInstallmentsForLoan(String loanId) {
     final query = _db.select(_db.installments)..where((t) => t.loanId.equals(loanId))..orderBy([(t) => OrderingTerm.asc(t.sequenceNumber)]);
     return query.watch().map((rows) => rows.toDomainList());
@@ -154,3 +159,4 @@ class LedgerRepository {
     });
   }
 }
+

@@ -36,12 +36,12 @@ class LoanDetailScreen extends ConsumerWidget {
       ),
       body: loanAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (_, __) => const Center(child: Text('خطا در بارگذاری وام')),
+        error: (_, _) => const Center(child: Text('خطا در بارگذاری وام')),
         data: (data) {
           if (data == null) return const Center(child: Text('وام یافت نشد'));
           return installmentsAsync.when(
             loading: () => const Center(child: CircularProgressIndicator()),
-            error: (_, __) => const Center(child: Text('خطا در بارگذاری اقساط')),
+            error: (_, _) => const Center(child: Text('خطا در بارگذاری اقساط')),
             data: (installments) => _InstallmentsList(loan: data, installments: installments),
           );
         },

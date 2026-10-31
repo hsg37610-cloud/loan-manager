@@ -162,6 +162,47 @@ final class LoanByIdFamily extends $Family
   String toString() => r'loanByIdProvider';
 }
 
+@ProviderFor(allInstallments)
+final allInstallmentsProvider = AllInstallmentsProvider._();
+
+final class AllInstallmentsProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<Installment>>,
+          List<Installment>,
+          Stream<List<Installment>>
+        >
+    with
+        $FutureModifier<List<Installment>>,
+        $StreamProvider<List<Installment>> {
+  AllInstallmentsProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'allInstallmentsProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$allInstallmentsHash();
+
+  @$internal
+  @override
+  $StreamProviderElement<List<Installment>> $createElement(
+    $ProviderPointer pointer,
+  ) => $StreamProviderElement(pointer);
+
+  @override
+  Stream<List<Installment>> create(Ref ref) {
+    return allInstallments(ref);
+  }
+}
+
+String _$allInstallmentsHash() => r'406efa0a0870b6aebf1e04a6da7507778d07a8af';
+
 @ProviderFor(loanInstallments)
 final loanInstallmentsProvider = LoanInstallmentsFamily._();
 

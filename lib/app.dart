@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loan_manager/core/providers/settings_providers.dart';
 import 'package:loan_manager/core/router/app_router.dart';
 import 'package:loan_manager/core/theme/app_theme.dart';
+import 'package:loan_manager/features/security/presentation/app_lock_gate.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});
@@ -30,7 +31,7 @@ class App extends ConsumerWidget {
           textDirection: TextDirection.rtl,
           child: MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(fontScale)),
-            child: child!,
+            child: AppLockGate(child: child!),
           ),
         );
       },

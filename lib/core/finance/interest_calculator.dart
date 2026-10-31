@@ -35,9 +35,13 @@ class InterestCalculator {
       final result = calcB(principal: principal, annualRateBp: mid, term: termMonths);
       final diff = (result.installment - targetInstallment).abs();
       if (diff < bestDiff) { bestDiff = diff; bestRate = mid; }
-      if (result.installment == targetInstallment) return mid;
-      else if (result.installment < targetInstallment) low = mid + 1;
-      else high = mid - 1;
+      if (result.installment == targetInstallment) {
+        return mid;
+      } else if (result.installment < targetInstallment) {
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
     }
     return bestRate;
   }

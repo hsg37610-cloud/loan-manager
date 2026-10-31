@@ -1,6 +1,7 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loan_manager/core/providers/settings_providers.dart';
+import 'package:loan_manager/features/security/presentation/security_settings_card.dart';
 import 'package:loan_manager/features/settings/presentation/backup_settings_card.dart';
 
 class SettingsScreen extends ConsumerWidget {
@@ -44,6 +45,9 @@ class SettingsScreen extends ConsumerWidget {
           ]),
         ),
       ),
+      const SizedBox(height: 24),
+      Text('امنیت', style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
+      const SecuritySettingsCard(),
       const SizedBox(height: 24),
       const BackupSettingsCard(),
       const SizedBox(height: 24),

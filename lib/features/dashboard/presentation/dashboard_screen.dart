@@ -45,7 +45,7 @@ class _SummaryCard extends StatelessWidget {
   const _SummaryCard({required this.title, required this.value, required this.icon, required this.color});
   @override
   Widget build(BuildContext context) {
-    return Card(elevation: 0, color: color.withOpacity(0.1), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16), side: BorderSide(color: color.withOpacity(0.3))),
+    return Card(elevation: 0, color: color.withValues(alpha: 0.1), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16), side: BorderSide(color: color.withValues(alpha: 0.3))),
       child: Padding(padding: const EdgeInsets.all(16), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Icon(icon, color: color), const SizedBox(height: 12), Text(value, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: color)), Text(title, style: TextStyle(fontSize: 12, color: color)),
       ])),
@@ -57,9 +57,9 @@ class _FeatureCard extends StatelessWidget {
   const _FeatureCard({required this.title, required this.subtitle, required this.icon, required this.color, required this.onTap});
   @override
   Widget build(BuildContext context) {
-    return Card(elevation: 0, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16), side: BorderSide(color: Colors.grey.withOpacity(0.2))),
+    return Card(elevation: 0, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16), side: BorderSide(color: Colors.grey.withValues(alpha: 0.2))),
       child: InkWell(onTap: onTap, borderRadius: BorderRadius.circular(16), child: Padding(padding: const EdgeInsets.all(16), child: Row(children: [
-        Container(padding: const EdgeInsets.all(12), decoration: BoxDecoration(color: color.withOpacity(0.1), borderRadius: BorderRadius.circular(12)), child: Icon(icon, color: color)),
+        Container(padding: const EdgeInsets.all(12), decoration: BoxDecoration(color: color.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(12)), child: Icon(icon, color: color)),
         const SizedBox(width: 16), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)), Text(subtitle, style: TextStyle(fontSize: 12, color: Colors.grey.shade600)),
         ])), const Icon(Icons.arrow_back_ios_new, size: 16, color: Colors.grey),
