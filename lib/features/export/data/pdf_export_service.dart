@@ -27,10 +27,10 @@ class PdfExportService {
 
   static const String _regularAsset = 'assets/fonts/IRANSansX-Regular.ttf';
   static const String _boldAsset = 'assets/fonts/IRANSansX-Bold.ttf';
-  static const pw.Color _ink = pw.Color(0xFF212121);
-  static const pw.Color _muted = pw.Color(0xFF757575);
-  static const pw.Color _accent = pw.Color(0xFF1565C0);
-  static const pw.Color _line = pw.Color(0xFFE0E0E0);
+  static const Color _ink = Color(0xFF212121);
+  static const Color _muted = Color(0xFF757575);
+  static const Color _accent = Color(0xFF1565C0);
+  static const Color _line = Color(0xFFE0E0E0);
 
   Future<bool> share({required List<String> loanIds, DateRangeFilter? range}) async {
     final bytes = await build(loanIds: loanIds, range: range);
@@ -69,30 +69,30 @@ class PdfExportService {
           pw.SizedBox(height: 8),
           pw.Table(
             border: pw.TableBorder.all(color: _line, width: 0.5),
-            columnWidths: const [
-              pw.FixedColumnWidth(90),
-              pw.FixedColumnWidth(60),
-              pw.FixedColumnWidth(28),
-              pw.FixedColumnWidth(68),
-              pw.FixedColumnWidth(78),
-              pw.FixedColumnWidth(78),
-              pw.FixedColumnWidth(78),
-              pw.FixedColumnWidth(42),
-            ],
-            header: pw.TableRow(
-              decoration: pw.BoxDecoration(color: _accent),
-              children: [
-                _headerCell('نام وام', bold),
-                _headerCell('بانک', bold),
-                _headerCell('قسط', bold),
-                _headerCell('سررسید', bold),
-                _headerCell('مبلغ', bold),
-                _headerCell('پرداخت‌شده', bold),
-                _headerCell('باقی‌مانده', bold),
-                _headerCell('وضعیت', bold),
-              ],
-            ),
+            columnWidths: {
+              0: pw.FixedColumnWidth(90),
+              1: pw.FixedColumnWidth(60),
+              2: pw.FixedColumnWidth(28),
+              3: pw.FixedColumnWidth(68),
+              4: pw.FixedColumnWidth(78),
+              5: pw.FixedColumnWidth(78),
+              6: pw.FixedColumnWidth(78),
+              7: pw.FixedColumnWidth(42),
+            },
             children: [
+              pw.TableRow(
+                decoration: pw.BoxDecoration(color: _accent),
+                children: [
+                  _headerCell('نام وام', bold),
+                  _headerCell('بانک', bold),
+                  _headerCell('قسط', bold),
+                  _headerCell('سررسید', bold),
+                  _headerCell('مبلغ', bold),
+                  _headerCell('پرداخت‌شده', bold),
+                  _headerCell('باقی‌مانده', bold),
+                  _headerCell('وضعیت', bold),
+                ],
+              ),
               for (final i in data.installments)
                 pw.TableRow(
                   children: [
@@ -159,7 +159,7 @@ class PdfExportService {
   pw.Widget _headerCell(String text, pw.Font bold) => pw.Container(
         padding: const pw.EdgeInsets.symmetric(vertical: 6, horizontal: 8),
         alignment: pw.Alignment.center,
-        child: pw.Text(text, style: pw.TextStyle(font: bold, fontSize: 9, color: pw.Color(0xFFFFFFFF))),
+        child: pw.Text(text, style: pw.TextStyle(font: bold, fontSize: 9, color: Color(0xFFFFFFFF))),
       );
 
   pw.Widget _cell(String text, pw.Font regular, {pw.Alignment align = pw.Alignment.centerRight}) => pw.Container(

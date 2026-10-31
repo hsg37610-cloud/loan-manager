@@ -117,5 +117,5 @@ class ExcelExportService {
   /// Human-readable dates are written as Jalali `yyyy/MM/dd`.
   CellValue _date(String? iso) => TextCellValue(iso == null ? '' : JalaliUtils.formatJalali(iso));
 
-  CellValue _int(int? v) => v == null ? const TextCellValue('') : IntCellValue(v);
+  CellValue _int(int? v) => v == null ? TextCellValue('') : IntCellValue(v);
 }

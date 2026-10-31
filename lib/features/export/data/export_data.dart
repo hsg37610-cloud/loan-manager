@@ -79,9 +79,9 @@ class ExportDataLoader {
   /// All dates in the database are stored as ISO `yyyy-MM-dd` strings, so
   /// lexicographic comparison of the text column is equivalent to date order.
   Expression<bool> _dateCondition(Expression<bool> e, TextColumn column, String? from, String? to) {
-    if (from != null && to != null) return e & column.isBetween(from, to);
-    if (from != null) return e & column.biggerValueEqual(from);
-    if (to != null) return e & column.smallerValueEqual(to);
+    if (from != null && to != null) return e & column.isBiggerOrEqualValue(from) & column.isSmallerOrEqualValue(to);
+    if (from != null) return e & column.isBiggerOrEqualValue(from);
+    if (to != null) return e & column.isSmallerOrEqualValue(to);
     return e;
   }
 }

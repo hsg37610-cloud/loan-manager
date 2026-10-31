@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:drift/drift.dart';
 import 'package:excel/excel.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loan_manager/core/database/app_database.dart';
@@ -207,8 +208,8 @@ class ExcelImportService {
       result.add(_ParsedLoan(
         id: id,
         name: _requiredText(row, h, 'نام وام', r, id)!,
-        bankName: row.text(h['بانک']),
-        cardBin: row.text(h['کارت بانکی']),
+        bankName: row.text(h['بانک'] ?? -1),
+        cardBin: row.text(h['کارت بانکی'] ?? -1),
         principal: _requiredInt(row, h, 'مبلغ کل', r, id)!,
         annualRateBp: row.intAt(h['نرخ سالانه (bp)'] ?? -1),
         termMonths: _requiredInt(row, h, 'تعداد قسط', r, id)!,
@@ -220,13 +221,13 @@ class ExcelImportService {
         effectiveRateBp: _requiredInt(row, h, 'نرخ مؤثر (bp)', r, id)!,
         calculationMethod: _requiredText(row, h, 'روش محاسبه', r, id)!,
         calculationVersion: row.intAt(h['نسخه روش'] ?? -1),
-        currency: row.text(h['ارز']),
-        status: row.text(h['وضعیت']),
+        currency: row.text(h['ارز'] ?? -1),
+        status: row.text(h['وضعیت'] ?? -1),
         settledDate: _optionalDate(row, h, 'تاریخ تسویه'),
-        note: row.text(h['یادداشت']),
-        facilityNumber: row.text(h['شماره تسهیلات']),
-        paymentLink: row.text(h['پیوند پرداخت']),
-        loanType: row.text(h['نوع وام']),
+        note: row.text(h['یادداشت'] ?? -1),
+        facilityNumber: row.text(h['شماره تسهیلات'] ?? -1),
+        paymentLink: row.text(h['پیوند پرداخت'] ?? -1),
+        loanType: row.text(h['نوع وام'] ?? -1),
         feeAmount: row.intAt(h['کارمزد'] ?? -1),
       ));
     }
@@ -289,8 +290,8 @@ class ExcelImportService {
         paymentDate: paidAt,
         amount: _requiredInt(row, h, 'مبلغ', r, id)!,
         unallocatedAmount: row.intAt(h['تخصیص‌نیافته'] ?? -1) ?? 0,
-        referenceNumber: row.text(h['شماره مرجع']),
-        note: row.text(h['یادداشت']),
+        referenceNumber: row.text(h['شماره مرجع'] ?? -1),
+        note: row.text(h['یادداشت'] ?? -1),
       ));
     }
     return result;
@@ -299,9 +300,12 @@ class ExcelImportService {
   Map<String, int> _headerIndex(Sheet sheet) {
     final map = <String, int>{};
     for (final cell in sheet.rows.first) {
-      final v = cell.value;
-      if (v is TextCellValue && v.value.trim().isNotEmpty) {
-        map[v.value.trim()] = cell.columnIndex;
+      final c = cell;
+      if (c == null) continue;
+      final v = c.value;
+      if (v is TextCellValue) {
+        final s = v.value.toString().trim();
+        if (s.isNotEmpty) map[s] = c.columnIndex;
       }
     }
     return map;
@@ -448,12 +452,12 @@ class _ParsedPayment {
 class _RowReader {
   _RowReader(this._row);
 
-  final List<Cell> _row;
+  final List<Data?> _row;
 
   bool get isEmpty {
     for (final c in _row) {
-      final v = c.value;
-      if (v is TextCellValue && v.value.trim().isNotEmpty) return false;
+      final v = c?.value;
+      if (v is TextCellValue && v.value.toString().trim().isNotEmpty) return false;
       if (v is IntCellValue || v is DoubleCellValue) return false;
     }
     return true;
@@ -461,9 +465,9 @@ class _RowReader {
 
   String? text(int col) {
     if (col < 0 || col >= _row.length) return null;
-    final v = _row[col].value;
+    final v = _row[col]?.value;
     if (v is TextCellValue) {
-      final s = v.value.trim();
+      final s = v.value.toString().trim();
       return s.isEmpty ? null : s;
     }
     if (v is IntCellValue) return v.value.toString();
@@ -480,6 +484,6 @@ class _RowReader {
     final i = int.tryParse(s);
     if (i != null) return i;
     final d = double.tryParse(s);
-    return d == null ? null : d.round();
+    return d?.round();
   }
 }

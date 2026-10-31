@@ -1,4 +1,4 @@
-﻿import 'package:loan_manager/core/database/app_database_provider.dart';
+import 'package:loan_manager/core/database/app_database_provider.dart';
 import 'package:loan_manager/features/ledger/data/ledger_repository.dart';
 import 'package:loan_manager/features/ledger/data/reminder_sync.dart';
 import 'package:loan_manager/features/ledger/domain/models.dart';
@@ -43,8 +43,7 @@ class RecordPayment extends _$RecordPayment {
   }
 }
 
-@riverpod
-class CreateLoan extends _$CreateLoan {
+@Riverpod(keepAlive: true)`nclass CreateLoan extends _$CreateLoan {
   @override
   FutureOr<String?> build() => null;
   Future<String?> submit({required String name, required String bankName, required int principal, required int? annualRateBp, required int? feeAmount, required String loanType, required int termMonths, required DateTime firstDueDate, required int dueDayOfMonth, String? facilityNumber, String? paymentLink}) async {

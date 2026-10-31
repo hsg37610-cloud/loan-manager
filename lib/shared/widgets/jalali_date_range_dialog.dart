@@ -114,7 +114,7 @@ class _RangeDialogState extends State<_RangeDialog> {
                 border: const OutlineInputBorder(),
                 suffixIcon: const Icon(Icons.calendar_today),
               ),
-              child: Text(value == null ? 'بدون محدودیت' : _format(value!)),
+              child: Text(value == null ? 'بدون محدودیت' : _format(value)),
             ),
           ),
         ),
