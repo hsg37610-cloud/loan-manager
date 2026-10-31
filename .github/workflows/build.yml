@@ -1,4 +1,4 @@
-name: Build Flutter APK
+name: Build Flutter APK from ZIP
 
 on:
   push:
@@ -12,6 +12,35 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+
+    - name: Clean old source (keep .github, .git, zip)
+      run: |
+        if [ -f "loan_manager_fixed.zip" ]; then
+          echo "ZIP found. Deleting old source..."
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name '.git' \
+            ! -name '.github' \
+            ! -name 'loan_manager_fixed.zip' \
+            -exec rm -rf {} +
+          echo "Old source deleted."
+        else
+          echo "No ZIP found. Skipping cleanup (safe mode)."
+        fi
+
+    - name: Extract Source ZIP
+      run: |
+        if [ -f "loan_manager_fixed.zip" ]; then
+          echo "Extracting..."
+          unzip -o loan_manager_fixed.zip -d .
+          if [ -d "loan_manager_fixed" ]; then
+            cp -r loan_manager_fixed/* .
+            rm -rf loan_manager_fixed
+          fi
+          rm loan_manager_fixed.zip
+          ls -la
+        fi
 
     - name: Increase swap file to 10GB
       run: |
@@ -40,12 +69,22 @@ jobs:
         cache: true
 
     - name: Install dependencies
+      env:
+        PUB_HOSTED_URL: "https://pub.flutter-io.cn"
+        FLUTTER_STORAGE_BASE_URL: "https://storage.flutter-io.cn"
       run: flutter pub get
 
-    - name: Build APK (ARM64, optimized memory)
+    - name: Generate code (build_runner)
+      env:
+        PUB_HOSTED_URL: "https://pub.flutter-io.cn"
+      run: dart run build_runner build --delete-conflicting-outputs || echo "build_runner warning (non-fatal)"
+
+    - name: Build APK
       env:
         CI: "true"
-        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx5g -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy=in-process -Dorg.gradle.kotlin.dsl.internal.io.timeout=120000"
+        PUB_HOSTED_URL: "https://pub.flutter-io.cn"
+        FLUTTER_STORAGE_BASE_URL: "https://storage.flutter-io.cn"
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx5g -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy=in-process"
       run: flutter build apk --release --target-platform android-arm64 --no-tree-shake-icons
 
     - name: Upload APK
