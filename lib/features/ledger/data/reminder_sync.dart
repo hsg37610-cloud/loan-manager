@@ -1,4 +1,4 @@
-import 'package:drift/drift.dart';
+﻿import 'package:drift/drift.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loan_manager/core/database/app_database.dart';
@@ -28,7 +28,7 @@ class ReminderSync {
       final loan = await (_db.select(_db.loans)..where((t) => t.id.equals(loanId))).getSingleOrNull();
       final rows = await (_db.select(_db.installments)..where((t) => t.loanId.equals(loanId))).get();
 
-      final isActive = loan != null && loan.deletedAt == null && loan.status == LoanStatus.active;
+      final isActive = loan != null && loan.deletedAt == null && loan.status == 'active';
       if (!isActive) {
         for (final r in rows) {
           await _notifications.cancelInstallmentReminder(r.id);
