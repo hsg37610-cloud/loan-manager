@@ -8,14 +8,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Increase swap file to 8GB
+    - name: Increase swap file to 10GB
       run: |
         sudo swapoff -a
-        sudo fallocate -l 8G /swapfile
+        sudo fallocate -l 10G /swapfile
         sudo chmod 600 /swapfile
         sudo mkswap /swapfile
         sudo swapon /swapfile
@@ -38,12 +39,34 @@ jobs:
         channel: 'stable'
         cache: true
 
+    - name: Configure Gradle mirrors
+      run: |
+        mkdir -p ~/.gradle
+        cat > ~/.gradle/init.gradle << 'EOF'
+        allprojects {
+            buildscript {
+                repositories {
+                    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+                    maven { url 'https://maven.aliyun.com/repository/google' }
+                    google()
+                    mavenCentral()
+                }
+            }
+            repositories {
+                maven { url 'https://maven.aliyun.com/repository/public' }
+                maven { url 'https://maven.aliyun.com/repository/google' }
+                google()
+                mavenCentral()
+            }
+        }
+        EOF
+
     - name: Install dependencies
       run: flutter pub get
 
-    - name: Build APK (ARM64, no minify, low memory)
+    - name: Build APK (ARM64, low memory)
       env:
-        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx3g -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy=in-process -Dfile.encoding=UTF-8"
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx3g -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy=in-process"
       run: flutter build apk --release --target-platform android-arm64 --no-tree-shake-icons
 
     - name: Upload APK
