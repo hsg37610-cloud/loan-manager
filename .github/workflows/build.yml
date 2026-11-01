@@ -17,33 +17,28 @@ jobs:
 
     - name: Clean old source (keep .github, .git, zip)
       run: |
-        if [ -f "loan_manager_fixed.zip" ]; then
-          echo "ZIP found. Deleting old source..."
+        if [ -f "loan_manager_fixed_v2.zip" ]; then
+          echo "V2 ZIP found. Deleting old source..."
           find . -mindepth 1 -maxdepth 1 \
             ! -name '.git' \
             ! -name '.github' \
-            ! -name 'loan_manager_fixed.zip' \
+            ! -name 'loan_manager_fixed_v2.zip' \
             -exec rm -rf {} +
           echo "Old source deleted."
         else
-          echo "No ZIP found. Skipping cleanup (safe mode)."
+          echo "No V2 ZIP found. Skipping cleanup."
         fi
 
-    - name: Extract Source ZIP and Apply Patches
+    - name: Extract Source ZIP
       run: |
-        if [ -f "loan_manager_fixed.zip" ]; then
+        if [ -f "loan_manager_fixed_v2.zip" ]; then
           echo "Extracting..."
-          unzip -o loan_manager_fixed.zip -d .
+          unzip -o loan_manager_fixed_v2.zip -d .
           if [ -d "loan_manager_fixed" ]; then
             cp -r loan_manager_fixed/* .
             rm -rf loan_manager_fixed
           fi
-          rm loan_manager_fixed.zip
-
-          echo "Applying automatic patches..."
-          # Fix file_picker 13.x API (remove .platform)
-          sed -i 's/FilePicker\.platform\.pickFiles/FilePicker.pickFiles/g' lib/features/ledger/presentation/loan_list_screen.dart
-          echo "Patches applied."
+          rm loan_manager_fixed_v2.zip
           ls -la
         fi
 
