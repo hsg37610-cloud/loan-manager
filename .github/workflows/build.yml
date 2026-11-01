@@ -39,6 +39,32 @@ jobs:
           ls -la
         fi
 
+    # ⚠️ این مرحله جدید است: اصلاح خودکار خطاهای سینتکس ChatGPT
+    - name: Fix ChatGPT Syntax Errors
+      run: |
+        python3 -c "
+        import re
+        
+        # 1. حذف پارامتر allowMultiple از loan_list_screen.dart
+        file1 = 'lib/features/ledger/presentation/loan_list_screen.dart'
+        with open(file1, 'r') as f:
+            content = f.read()
+        content = content.replace('allowMultiple: false,', '')
+        with open(file1, 'w') as f:
+            f.write(content)
+            
+        # 2. اصلاح رشته Regex در excel_import_service.dart
+        file2 = 'lib/features/import/data/excel_import_service.dart'
+        with open(file2, 'r') as f:
+            lines = f.readlines()
+        for i, line in enumerate(lines):
+            if 'final dimension = RegExp' in line:
+                lines[i] = '        final dimension = RegExp(r\"\"\"<dimension\\\\b[^>]*\\\\bref=[\"\\']([^\"\\']+)[\"\\']\"\"\").firstMatch(xml);\\n'
+        with open(file2, 'w') as f:
+            f.writelines(lines)
+        "
+        echo "Syntax errors fixed successfully."
+
     - name: Increase swap file to 10GB
       run: |
         sudo swapoff -a
