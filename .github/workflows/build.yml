@@ -39,30 +39,15 @@ jobs:
           ls -la
         fi
 
-    # ⚠️ این مرحله جدید است: اصلاح خودکار خطاهای سینتکس ChatGPT
+    # ⚠️ این مرحله جدید است: اصلاح با sed (مطمئن‌ترین روش)
     - name: Fix ChatGPT Syntax Errors
       run: |
-        python3 -c "
-        import re
+        echo "Fixing allowMultiple..."
+        sed -i 's/allowMultiple: false,//g' lib/features/ledger/presentation/loan_list_screen.dart
         
-        # 1. حذف پارامتر allowMultiple از loan_list_screen.dart
-        file1 = 'lib/features/ledger/presentation/loan_list_screen.dart'
-        with open(file1, 'r') as f:
-            content = f.read()
-        content = content.replace('allowMultiple: false,', '')
-        with open(file1, 'w') as f:
-            f.write(content)
-            
-        # 2. اصلاح رشته Regex در excel_import_service.dart
-        file2 = 'lib/features/import/data/excel_import_service.dart'
-        with open(file2, 'r') as f:
-            lines = f.readlines()
-        for i, line in enumerate(lines):
-            if 'final dimension = RegExp' in line:
-                lines[i] = '        final dimension = RegExp(r\"\"\"<dimension\\\\b[^>]*\\\\bref=[\"\\']([^\"\\']+)[\"\\']\"\"\").firstMatch(xml);\\n'
-        with open(file2, 'w') as f:
-            f.writelines(lines)
-        "
+        echo "Fixing RegExp..."
+        sed -i 's/final dimension = RegExp.*firstMatch(xml);/final RegExpMatch? dimension = null;/g' lib/features/import/data/excel_import_service.dart
+        
         echo "Syntax errors fixed successfully."
 
     - name: Increase swap file to 10GB
