@@ -1,4 +1,4 @@
-﻿import 'package:file_picker/file_picker.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -86,9 +86,33 @@ class _LoanListScreenState extends ConsumerState<LoanListScreen> {
   }
 
   Future<void> _importExcel() async {
-    final files = await FilePicker.pickFiles(type: FileType.custom, allowedExtensions: ['xlsx']);
-    if (files.isEmpty) return;
-    final path = files.single.path;
+    // file_picker 13.x: use the static FilePicker.pickFiles() API.
+    // The return type varies; handle both List<PlatformFile> and FilePickerResult?.
+    String? path;
+    try {
+      final dynamic result = await FilePicker.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['xlsx'],
+      );
+      if (result == null) return;
+
+      // Case A: FilePickerResult? with .files list
+      try {
+        final dynamic files = result.files;
+        if (files is List && files.isNotEmpty) {
+          path = files.first.path as String?;
+        }
+      } catch (_) {}
+
+      // Case B: result is already a List<PlatformFile>
+      if (path == null && result is List && result.isNotEmpty) {
+        path = (result.first as PlatformFile).path;
+      }
+    } catch (e) {
+      _toast('خطا در انتخاب فایل: $e');
+      return;
+    }
+
     if (path == null) {
       _toast('انتخاب فایل ممکن نبود');
       return;
@@ -136,9 +160,9 @@ class _LoanListScreenState extends ConsumerState<LoanListScreen> {
                 if (item == 'import-excel') _importExcel();
               },
               itemBuilder: (_) => [
-                PopupMenuItem(
+                const PopupMenuItem(
                   value: 'import-excel',
-                  child: const Row(
+                  child: Row(
                     children: [
                       Icon(Icons.upload_file_rounded, size: 20),
                       SizedBox(width: 8),
