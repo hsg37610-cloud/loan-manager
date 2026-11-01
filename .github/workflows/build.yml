@@ -39,6 +39,12 @@ jobs:
           ls -la
         fi
 
+    - name: Fix Spreadsheet Decoder Version
+      run: |
+        echo "Fixing spreadsheet_decoder version in pubspec.yaml..."
+        sed -i 's/spreadsheet_decoder: \^2.3.1/spreadsheet_decoder: ^2.3.0/g' pubspec.yaml
+        echo "Version fixed. The correct version is ^2.3.0."
+
     - name: Increase swap file to 10GB
       run: |
         sudo swapoff -a
