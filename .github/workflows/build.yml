@@ -17,27 +17,26 @@ jobs:
 
     - name: Clean old source (keep .github, .git, zip)
       run: |
-        if [ -f "loan_manager_updated.zip" ]; then
-          echo "Updated ZIP found. Deleting old source..."
+        if [ -f "loan_manager_reorder.zip" ]; then
+          echo "Reorder ZIP found. Deleting old source..."
           find . -mindepth 1 -maxdepth 1 \
             ! -name '.git' \
             ! -name '.github' \
-            ! -name 'loan_manager_updated.zip' \
+            ! -name 'loan_manager_reorder.zip' \
             -exec rm -rf {} +
           echo "Old source deleted."
         fi
 
     - name: Extract Source ZIP
       run: |
-        if [ -f "loan_manager_updated.zip" ]; then
-          unzip -o loan_manager_updated.zip -d .
+        if [ -f "loan_manager_reorder.zip" ]; then
+          unzip -o loan_manager_reorder.zip -d .
           if [ -d "loan_manager" ]; then
             cp -r loan_manager/* .
             rm -rf loan_manager
           fi
-          rm loan_manager_updated.zip
-          echo "--- Verifying manifest ---"
-          ls -la android/app/src/main/AndroidManifest.xml || echo "MANIFEST MISSING"
+          rm loan_manager_reorder.zip
+          ls -la
         fi
 
     - name: Increase swap file to 10GB
