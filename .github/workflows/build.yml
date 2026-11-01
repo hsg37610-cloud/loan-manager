@@ -36,50 +36,8 @@ jobs:
             rm -rf loan_manager
           fi
           rm loan_manager_updated.zip
-          ls -la
-        fi
-
-    # Safety net: if the manifest is missing from the zip, recreate it
-    - name: Recreate Missing AndroidManifest.xml (if needed)
-      run: |
-        if [ ! -f "android/app/src/main/AndroidManifest.xml" ]; then
-          echo "Manifest missing. Creating..."
-          mkdir -p android/app/src/main
-          cat > android/app/src/main/AndroidManifest.xml << 'EOF'
-          <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-              <uses-permission android:name="android.permission.INTERNET"/>
-              <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-              <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
-              <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-              <application
-                  android:label="مدیریت وام"
-                  android:name="${applicationName}"
-                  android:icon="@mipmap/ic_launcher">
-                  <activity
-                      android:name=".MainActivity"
-                      android:exported="true"
-                      android:launchMode="singleTop"
-                      android:theme="@style/LaunchTheme"
-                      android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-                      android:hardwareAccelerated="true"
-                      android:windowSoftInputMode="adjustResize">
-                      <meta-data
-                        android:name="io.flutter.embedding.android.NormalTheme"
-                        android:resource="@style/NormalTheme"
-                        />
-                      <intent-filter>
-                          <action android:name="android.intent.action.MAIN"/>
-                          <category android:name="android.intent.category.LAUNCHER"/>
-                      </intent-filter>
-                  </activity>
-                  <meta-data
-                      android:name="flutterEmbedding"
-                      android:value="2" />
-              </application>
-          </manifest>
-          EOF
-        else
-          echo "Manifest exists in zip. Skipping."
+          echo "--- Verifying manifest ---"
+          ls -la android/app/src/main/AndroidManifest.xml || echo "MANIFEST MISSING"
         fi
 
     - name: Increase swap file to 10GB
