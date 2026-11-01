@@ -17,38 +17,27 @@ jobs:
 
     - name: Clean old source (keep .github, .git, zip)
       run: |
-        if [ -f "loan_manager_v5.zip" ]; then
-          echo "V5 ZIP found. Deleting old source..."
+        if [ -f "loan_manager_ultimate.zip" ]; then
+          echo "Ultimate ZIP found. Deleting old source..."
           find . -mindepth 1 -maxdepth 1 \
             ! -name '.git' \
             ! -name '.github' \
-            ! -name 'loan_manager_v5.zip' \
+            ! -name 'loan_manager_ultimate.zip' \
             -exec rm -rf {} +
           echo "Old source deleted."
         fi
 
     - name: Extract Source ZIP
       run: |
-        if [ -f "loan_manager_v5.zip" ]; then
-          unzip -o loan_manager_v5.zip -d .
+        if [ -f "loan_manager_ultimate.zip" ]; then
+          unzip -o loan_manager_ultimate.zip -d .
           if [ -d "loan_manager" ]; then
             cp -r loan_manager/* .
             rm -rf loan_manager
           fi
-          rm loan_manager_v5.zip
+          rm loan_manager_ultimate.zip
           ls -la
         fi
-
-    # ⚠️ این مرحله جدید است: اصلاح با sed (مطمئن‌ترین روش)
-    - name: Fix ChatGPT Syntax Errors
-      run: |
-        echo "Fixing allowMultiple..."
-        sed -i 's/allowMultiple: false,//g' lib/features/ledger/presentation/loan_list_screen.dart
-        
-        echo "Fixing RegExp..."
-        sed -i 's/final dimension = RegExp.*firstMatch(xml);/final RegExpMatch? dimension = null;/g' lib/features/import/data/excel_import_service.dart
-        
-        echo "Syntax errors fixed successfully."
 
     - name: Increase swap file to 10GB
       run: |
