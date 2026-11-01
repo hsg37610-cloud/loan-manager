@@ -29,7 +29,7 @@ jobs:
           echo "No ZIP found. Skipping cleanup (safe mode)."
         fi
 
-    - name: Extract Source ZIP
+    - name: Extract Source ZIP and Apply Patches
       run: |
         if [ -f "loan_manager_fixed.zip" ]; then
           echo "Extracting..."
@@ -39,6 +39,11 @@ jobs:
             rm -rf loan_manager_fixed
           fi
           rm loan_manager_fixed.zip
+
+          echo "Applying automatic patches..."
+          # Fix file_picker 13.x API (remove .platform)
+          sed -i 's/FilePicker\.platform\.pickFiles/FilePicker.pickFiles/g' lib/features/ledger/presentation/loan_list_screen.dart
+          echo "Patches applied."
           ls -la
         fi
 
